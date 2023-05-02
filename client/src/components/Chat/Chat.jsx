@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import s from "./Chat.module.css";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getUser,
@@ -118,7 +117,7 @@ function Chat() {
             <Arrow />
           </button>
           <h2 className={s.convTitle}>Messages</h2>
-          <ReactSearchAutocomplete
+          {/* <ReactSearchAutocomplete
             items={users}
             placeholder="Search a user to start a conversation"
             fuseOptions={{ keys: ["name", "username"] }} // Search on both fields
@@ -142,7 +141,7 @@ function Chat() {
               // clearIconMargin: "3px 8px 0 0",
               zIndex: 2,
             }}
-          />
+          /> */}
         </div>
         {currentUser?.name ? (
           <div className={s.scrollConv}>

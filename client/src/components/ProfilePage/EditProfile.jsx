@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Box, Button, TextField } from "@mui/material";
 import { updateUser } from "../../redux/features/users/usersGetSlice";
@@ -84,7 +82,7 @@ const EditProfile = (close) => {
         <Box className={styles.header}>
           <h1>Edit your profile</h1>
           <p>
-            <FontAwesomeIcon onClick={close.close} icon={faXmark} />
+            {/* <FontAwesomeIcon onClick={close.close} icon={faXmark} /> */}
           </p>
         </Box>
         <Box className={styles.content}>

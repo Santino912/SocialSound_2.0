@@ -3,8 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserByIdToProfile } from "../../redux/features/users/usersGetSlice";
 import { Stack, ThemeProvider } from "@mui/system";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { Box, Button, createTheme } from "@mui/material";
 import { changeUserChat } from "../../redux/features/chat/chatGetSlice";
 import styles from "./ProfilePage.module.css";
@@ -156,13 +154,14 @@ const ProfilePage = () => {
               </Box>
             </Box>
             <Box className={styles.optionsContainer}>
-              {currentUser._id === profileUser._id && (
+              {/* {currentUser._id === profileUser._id && (
                 <FontAwesomeIcon
                   onClick={() => handleOpen()}
                   className={styles.optionsButton}
-                  icon={faEllipsis}
+                  // icon={faEllipsis}
                 />
-              )}
+              )} */}
+              <div>ICON</div>
               {open && (
                 <Box
                   className={styles.optionsModal}
@@ -216,10 +215,10 @@ const ProfilePage = () => {
                     }}
                   >
                     <Link to="/messages">
-                      <FontAwesomeIcon
+                      {/* <FontAwesomeIcon
                         onClick={handleOnSelect}
-                        icon={faEnvelope}
-                      />
+                        // icon={faEnvelope}
+                      /> */}
                     </Link>
                   </p>
                 </Box>

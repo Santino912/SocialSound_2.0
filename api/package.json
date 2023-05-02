@@ -26,7 +26,6 @@
     "start": "node app.js",
     "watch-ts": "tsc -w",
     "build": "tsc"
-
   },
   "keywords": [],
   "author": "",

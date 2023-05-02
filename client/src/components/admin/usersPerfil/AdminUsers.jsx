@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { Avatar, Box, Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -161,7 +160,7 @@ const AdminUsers = () => {
       </Box>
       <Box className={style.usersContainer}>
         <Box style={{ width: "99%" }}>
-          <ReactSearchAutocomplete
+          {/* <ReactSearchAutocomplete
             items={arrUsers}
             fuseOptions={{ keys: ["name"] }}
             autoFocus
@@ -182,7 +181,7 @@ const AdminUsers = () => {
                 avatar: e.avatar,
               })
             }
-          />
+          /> */}
         </Box>
       </Box>
     </Box>

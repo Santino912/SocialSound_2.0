@@ -4,8 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { doc, getDocFromServer, setDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Typography, Button, Modal, Box } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MailIcon from "@mui/icons-material/Mail";
 import logo from "../../images/logoicon.png";
 import Upload from "../Upload/Upload";
@@ -95,11 +94,11 @@ const SideBar = () => {
               <h5 className={s.premiumText}>Premium</h5>
             )}
           </Box>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             onClick={() => setOpenBoolean(!openBoolean)}
             className={s.dotsMenu}
-            icon={faEllipsis}
-          />
+            // icon={faEllipsis}
+          /> */}
         </Box>
 
         <li className={s.routeItem}>

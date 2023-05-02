@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getGenres } from "../../redux/features/genres/genreGetSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
+
 import { setUserGenres } from "../../redux/features/users/usersGetSlice";
 import styles from "./pleasures.module.css";
 
@@ -80,13 +76,13 @@ const Pleasures = () => {
           {currentPage > 1 ? (
             <button className={styles.buttonPages}>
               <p onClick={previousPage}>
-                <FontAwesomeIcon icon={faChevronLeft} />
+                {/* <FontAwesomeIcon icon={faChevronLeft} /> */}
               </p>
             </button>
           ) : (
             <button className={styles.buttonPagesDisabled} disabled>
               <p onClick={previousPage}>
-                <FontAwesomeIcon icon={faChevronLeft} />
+                {/* <FontAwesomeIcon icon={faChevronLeft} /> */}
               </p>
             </button>
           )}
@@ -119,13 +115,13 @@ const Pleasures = () => {
           {currentPage !== pageNumbers ? (
             <button className={styles.buttonPages}>
               <p onClick={nextPage}>
-                <FontAwesomeIcon icon={faChevronRight} />
+                {/* <FontAwesomeIcon icon={faChevronRight} /> */}
               </p>
             </button>
           ) : (
             <button className={styles.buttonPagesDisabled} disabled>
               <p onClick={nextPage}>
-                <FontAwesomeIcon icon={faChevronRight} />
+                {/* <FontAwesomeIcon icon={faChevronRight} /> */}
               </p>
             </button>
           )}

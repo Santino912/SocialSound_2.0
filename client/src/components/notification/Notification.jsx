@@ -16,7 +16,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { DateTime } from "luxon";
 import {
   disabledUserNotification,
   watchedUserNotification,
@@ -188,9 +187,9 @@ const Notification = () => {
                                           variant="body2"
                                           color="#757575"
                                         >
-                                          {DateTime.fromISO(user.date).toFormat(
+                                          {/* {DateTime.fromISO(user.date).toFormat(
                                             "ff"
-                                          )}
+                                          )} */}
                                         </Typography>
                                       </div>
                                     </>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import "@videojs/themes/dist/fantasy/index.css";
+// import "@videojs/themes/dist/fantasy/index.css";
 import "./Video.css";
 import { useSelector } from "react-redux";
 
