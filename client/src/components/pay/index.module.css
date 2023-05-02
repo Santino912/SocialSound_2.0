@@ -1,0 +1,11 @@
+.divButton .bt{
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.divButton .bt:hover{
+    color: rgb(0, 255, 191);
+}

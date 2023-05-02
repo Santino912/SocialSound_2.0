@@ -1,0 +1,67 @@
+.adminPostsContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: var(--main-page-color);
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.carousel {
+    height: 50px !important;
+    position: relative !important;
+    border-radius: 10px;
+}
+
+.divMobileStepper {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow {
+    opacity: 0.5 !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+.arrow:hover {
+    opacity: 1 !important;
+}
+
+.postsContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.postsDiv {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerGetReport {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 30px;
+}

@@ -1,0 +1,44 @@
+.container{
+    background-image: url(https://i1.wp.com/ultramarinos.co/wp-content/uploads/2016/02/wayf-3.jpg?fit=1164%2C629);
+    background-attachment: fixed;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Inter", sans-serif;
+    padding: 20px;
+}
+
+.backgroundContainer{
+width: 700px;
+height: 200px;
+margin-top: 20px;
+ background-color:rgba(181, 181, 181, 0.089);
+ border-radius: 10px;
+ padding: 50px;
+}
+
+.container h2{
+    margin-top: 50px;
+    margin-left: 160px;
+}
+
+.divHome{
+    background-color: rgb(163, 243, 232);
+    border-radius: 8px;
+    padding: 12px;
+    color: black;
+    font-size: large;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+}
+.divHome:hover{
+    color: white;
+    background-color: rgba(127, 255, 212, 0.898);
+}

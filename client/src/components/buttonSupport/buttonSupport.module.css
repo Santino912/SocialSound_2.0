@@ -1,0 +1,15 @@
+.buttonSupport button {
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.buttonSupport button:hover {
+    color: #00E2BE;
+}

@@ -1,0 +1,44 @@
+.customDialog div[role=dialog]{
+    background-color: transparent !important;
+}
+.allContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.155);
+}
+.allContainer svg path{
+    transition: 0.3s;
+    fill: white;
+}
+.allContainer svg:hover path{
+    fill: aqua;
+}
+.allContainer div[role=button]{
+    width: calc(100% - 60px);
+}
+.queueItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+.queueItem img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.trackInfo p {
+    cursor: inherit;
+    color: rgba(255, 255, 255, 0.434) !important;
+}
+.queueItem svg path{
+    fill: white;
+    justify-self: flex-end;
+    transition: 0.3s;
+}
+.queueTrack:hover .queueItem svg path{
+    fill: aqua;
+}

@@ -1,0 +1,93 @@
+.containerAll {
+  width: 100%;
+  text-align: start;
+}
+
+.title {
+  width: 100%;
+  text-align: start;
+  color: var(--second-page-color) !important;
+}
+.usersContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 2vh;
+}
+
+.userContainerShort {
+  max-width: 100vw;
+  width: 50%;
+  display: flex;
+  min-width: 250px;
+  height: 90px;
+  align-items: center;
+}
+.postsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 2vh;
+  gap: 10px;
+}
+
+.findedContainerShort {
+  width: 410px;
+  display: flex;
+  min-width: 250px;
+  height: 150px;
+  align-items: center;
+  background-color: #000e2ca4;
+  border-radius: 10px;
+}
+.avatarContainer {
+  width: 160px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover {
+  position: absolute;
+  width: 100px !important;
+  height: 100px !important;
+  opacity: 0.5;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 300px;
+}
+
+.titleName {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  font-size: 19px !important;
+  font-weight: 500 !important;
+}
+
+.subTitleName {
+  width: 100%;
+  height: 15%;
+  font-size: 15px !important;
+  display: flex;
+  align-items: flex-end;
+}
+
+.date {
+  width: 100%;
+  height: 15%;
+  font-size: 15px !important;
+  display: flex;
+  font-weight: 300 !important;
+  justify-content: flex-end;
+  margin: 0 10px;
+}

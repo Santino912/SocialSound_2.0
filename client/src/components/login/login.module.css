@@ -1,0 +1,225 @@
+.containerLoginDiv {
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  display: flex;
+  background-color: var(--main-page-color);
+  min-height: 570px;
+}
+
+.divBackground {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  top: 0;
+  background-color: var(--main-page-color);
+  border-radius: 0px 40px 40px 0px;
+  min-height: 570px;
+}
+
+.divBackgroundColor {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  border-radius: 0px 40px 40px 0px;
+  min-height: 570px;
+}
+
+.backgroundImage {
+  top: 0;
+  background-image: url("../../images/original_2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0px 40px 40px 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.loginContainer {
+  background-color: var(--main-page-color);
+  height: 100%;
+  width: 50%;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  min-height: 570px;
+}
+
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+}
+
+.containAll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1vh;
+  width: 50%;
+  height: auto;
+}
+
+.space {
+  display: block;
+  width: 100%;
+  height: 13vh;
+  min-height: 70px;
+}
+
+.orderForm {
+  display: flex;
+  gap: 2vh;
+  flex-direction: column;
+}
+
+.orderForm .input {
+  width: 100% !important;
+}
+
+.btnRL {
+  position: relative;
+  height: 50px;
+  color: #000a1f !important;
+  font-size: 15px;
+  background-color: #00ffd6 !important;
+  border-radius: 40px !important;
+  width: 100%;
+  font-weight: bold !important;
+  font-family: inherit !important;
+}
+
+.googleButton {
+  background-color: var(--main-page-color);
+  border: 2px solid var(--main-page-color);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.arrow {
+  position: relative;
+  display: block;
+  z-index: 10;
+  border: 0px;
+  color: rgb(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0.5;
+  padding: 15px;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrowResposive {
+  position: absolute;
+  display: none;
+  z-index: 10;
+  border: 0px;
+  color: rgb(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0.5;
+  padding: 15px;
+}
+.arrowResposive:hover {
+  opacity: 1;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+}
+
+.btnDialog Button {
+  background-color: var(--secondary-page-color) !important;
+  font-family: "Inter", sans-serif;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  width: 120px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  left: 90%;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* To the left of the tooltip */
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent red transparent transparent;
+}
+
+.checkboxTerms {
+  color: red !important;
+  animation: checkBoxAnimated 0.2s ease infinite;
+}
+
+@keyframes checkBoxAnimated {
+  0% {
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+@media (max-width: 890px) {
+  .divBackground {
+    display: none;
+  }
+  .loginContainer {
+    width: 100%;
+  }
+  .arrowResposive {
+    display: block;
+  }
+}
+
+@media (max-width: 460px) {
+  .divBackground {
+    display: none;
+  }
+  .loginContainer {
+    width: 100%;
+  }
+  .containAll {
+    width: 80%;
+  }
+}

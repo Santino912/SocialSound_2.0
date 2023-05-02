@@ -1,0 +1,79 @@
+.post {
+  display: grid;
+  grid-auto-flow: column;
+  grid-row-gap: 10px;
+  background-color: #000714c4;
+  border-radius: 13px;
+  color: #c4c4c4;
+  margin-bottom: 40px;
+}
+
+.post .avatarName {
+  width: 50%;
+}
+
+.post button {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.post .buttonContainer {
+  width: 6%;
+  height: 70%;
+}
+
+.post .button {
+  background-color: red;
+}
+
+.post .button:hover {
+  background-color: rgb(201, 0, 0);
+}
+
+.post .playerWrapper {
+  position: relative;
+  padding-top: 56.25%;
+  /* padding-bottom: 41.25%; */
+  border-radius: 5px;
+  /* margin-left: 10%; */
+  display: flex;
+}
+
+.post .reactPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.post .icon {
+  color: #c4c4c4;
+}
+
+.textDescriptionContainer {
+  height: 10vh;
+  min-height: 70px;
+}
+
+.titlePostText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .addTrackContainer {
+    display: none;
+  }
+  .post {
+    height: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .post {
+    height: 100%;
+  }
+}

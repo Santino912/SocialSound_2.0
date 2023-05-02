@@ -1,0 +1,44 @@
+.rhap_additional-controls{
+    display: none;
+}
+.rhap_stacked .rhap_controls-section{
+    margin-top: 10px;
+}
+.rhap_controls-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.rhap_volume-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    justify-content: flex-start;
+}
+.rhap_volume-controls{
+    width: 35%;
+    display: flex;
+    flex: none;
+    align-self: flex-end;
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+.rhap_volume-controls:hover{
+    opacity: 1;
+}
+.rhap_main-controls button:hover svg path{
+    fill: aqua;
+}
+.rhap_volume-indicator:active{
+    transform: scale(118%);
+}
+.rhap_progress-filled{
+    background-color: aqua;
+}
+.rhap_time{
+    color: rgba(255, 255, 255, 0.703);
+    font-size: 13px;
+}

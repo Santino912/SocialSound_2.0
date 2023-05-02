@@ -1,0 +1,18 @@
+
+ .spin {
+  animation: 1.2s infinite;
+animation-name: spin; 
+}
+ 
+ @keyframes spin {
+    0%{
+        transform: rotate(0);
+
+    }
+    65% {
+     transform: rotate(355deg);
+    }
+    100%{
+     transform: rotate(360deg);
+    }
+   }

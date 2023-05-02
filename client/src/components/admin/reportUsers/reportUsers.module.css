@@ -1,0 +1,28 @@
+.containerAll {
+    width: 100vw;
+    height: 350px;
+    max-width: 530px;
+    min-width: 250px;
+    display: flex;
+    color: white;
+    background-color: var(--main-page-color-light);
+
+}
+
+.reporterDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    gap: 10px;
+    text-align: start;
+}
+
+.detailContainer {
+    width: 100%;
+    text-align: start;
+    margin-top: 10px;
+    height: 85%;
+}

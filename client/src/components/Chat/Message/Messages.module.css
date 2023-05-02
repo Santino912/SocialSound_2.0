@@ -1,0 +1,109 @@
+.profilePic{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.message{
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+.sender{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.messageContent{
+    max-width: 25vw;
+    border-radius: 22px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.messageContent p {
+    align-self: center;
+    text-align: left;
+    margin: 0;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+.message span {
+    font-size: 11px;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+.sender .messageContent{
+  padding-right: 15px;
+  padding-left: 13px;
+  color: #000a1f;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  gap: 5px;
+  background: linear-gradient(to bottom, #55fff6 0%, #00c9af 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+.sender .messageContent:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #55fff6 0%, #00c9af 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+}
+.sender .messageContent:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: #000a1f;
+    border-bottom-left-radius: 10px;
+}
+.destination .messageContent {
+    background-color: #0c1f48;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 13px;
+    margin-left: 15px;
+}
+  
+.destination .messageContent:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #0c1f48;
+    border-bottom-right-radius: 15px;
+}
+.destination .messageContent:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: #000a1f;
+    border-bottom-right-radius: 10px;
+}
+.messageImage{
+    border-radius: 12px;
+    max-width: 100%;
+}

@@ -1,0 +1,221 @@
+.containerRegisterDiv {
+  width: 100vw;
+  color: white;
+  display: flex;
+  background-color: var(--main-page-color);
+  min-height: 630px;
+}
+
+.divBackground {
+  width: 50%;
+  position: relative;
+  top: 0;
+  background-color: var(--main-page-color);
+  border-radius: 0px 40px 40px 0px;
+  min-height: 630px;
+}
+
+.divBackgroundColor {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  border-radius: 0px 40px 40px 0px;
+  min-height: 630px;
+}
+
+.backgroundImage {
+  top: 0;
+  background-image: url("../../images/original_2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0px 40px 40px 0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.registerContainer {
+  background-color: var(--main-page-color);
+  height: 100vh;
+  width: 50%;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 630px;
+}
+
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+}
+
+.containAll {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1vh;
+  width: 50%;
+  height: auto;
+}
+
+.orderForm {
+  display: flex;
+  gap: 2vh;
+  flex-direction: column;
+}
+
+.orderForm .input {
+  width: 100% !important;
+}
+
+.googleButton {
+  background-color: var(--main-page-color);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 100% !important;
+}
+
+.btnRL {
+  position: relative;
+  height: 50px;
+  font-size: 15px;
+  transition: all 0.5s;
+  border-radius: 40px !important;
+  width: 100%;
+  font-weight: bold !important;
+  font-family: inherit !important;
+  color: #000a1f !important;
+  background-color: #00ffd6 !important;
+}
+
+.arrow {
+  position: relative;
+  display: block;
+  z-index: 10;
+  border: 0px;
+  color: rgb(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0.5;
+  padding: 15px;
+}
+
+.arrow:hover {
+  opacity: 1;
+}
+
+.arrowResposive {
+  position: absolute;
+  display: none;
+  z-index: 10;
+  border: 0px;
+  color: rgb(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0.5;
+  padding: 15px;
+}
+.arrowResposive:hover {
+  opacity: 1;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  font-size: 12px;
+  width: 120px;
+  background-color: rgb(255, 0, 0);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgb(255, 0, 0) transparent transparent;
+}
+
+.checkboxTerms {
+  color: red !important;
+  animation: checkBoxAnimated 0.2s ease infinite;
+}
+
+@keyframes checkBoxAnimated {
+  0% {
+    rotate: 20deg;
+  }
+
+  50% {
+    rotate: -20deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}
+
+@media (max-width: 960px) {
+  .divBackground {
+    display: none;
+  }
+  .registerContainer {
+    width: 100%;
+    margin-top: 70px;
+    justify-content: flex-start;
+  }
+  .arrowResposive {
+    display: block;
+  }
+  .containerRegisterDiv {
+    position: fixed;
+  }
+}
+@media (max-width: 475px) {
+  .divBackground {
+    display: none;
+  }
+  .loginContainer {
+    width: 100%;
+  }
+  .containAll {
+    width: 80%;
+  }
+  .containerRegisterDiv {
+    width: 100vw;
+    height: 100vh;
+  }
+}

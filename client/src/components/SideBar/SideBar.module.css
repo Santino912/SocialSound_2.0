@@ -1,0 +1,315 @@
+.nameWithPremium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cancelPremiumButton {
+  color: white !important;
+  text-transform: none !important;
+}
+
+.nameSideBar {
+  width: 150px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+.premiumText {
+  background: linear-gradient(
+    to right,
+    rgb(255, 255, 0),
+    rgb(255, 200, 2),
+    rgb(255, 140, 0),
+    rgb(255, 200, 2),
+    rgb(255, 255, 0)
+  );
+  background-size: 200%;
+  background-clip: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  animation: backgroundAnim 3s linear infinite;
+}
+
+@keyframes backgroundAnim {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+.testcontainer {
+  background-color: #000a1f;
+  min-height: 100vh;
+  background-image: url(../../images/svg/polygons.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+h4 {
+  margin: 0;
+  cursor: default;
+}
+
+.backgroundEditProfile {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+.editProfileBox {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+  background-color: white;
+  top: 130px;
+  left: 185px;
+}
+.editProfileBox:hover {
+  transition: 0.5s;
+  background-color: rgb(211, 211, 211);
+}
+
+.filter {
+  background: rgba(0, 10, 31, 0.88);
+  min-height: 100vh;
+  /* backdrop-filter: blur(15px); */
+}
+ul {
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.sideBar {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: white;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 16px 0px 8px;
+  gap: 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.559);
+  border-radius: 0px 10px 10px 0px;
+  background-color: #00071c9a;
+  z-index: 2;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* backdrop-filter: blur(50px) opacity(0.5); */
+  /* -webkit-backdrop-filter: blur(50px); */
+}
+
+.sideBarResponsive {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  color: white;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 16px 0px 8px;
+  gap: 25px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.559);
+  border-radius: 0px 10px 10px 0px;
+  background-color: rgb(0, 5, 40);
+  z-index: 2;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.sideBarResponsive li {
+  padding-left: 10px;
+  transition: all 0.3s ease;
+}
+.sideBarResponsive li svg path {
+  transition: all 0.3s ease;
+}
+.sideBarResponsive li:hover svg path {
+  fill: aqua;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.routescontainer {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+.profilePic {
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+.profileItem {
+  display: flex;
+  cursor: default !important;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+}
+
+.sideBar li {
+  padding-left: 10px;
+  transition: all 0.3s ease;
+}
+.sideBar li svg path {
+  transition: all 0.3s ease;
+}
+.sideBar li:hover svg path {
+  fill: aqua;
+}
+.optionsContainer li:hover {
+  color: #00e2be;
+  cursor: pointer;
+}
+.routescontainer li:hover {
+  color: #00e2be;
+  cursor: pointer;
+}
+.profileItem button {
+  font-family: "Inter", sans-serif;
+  border: none;
+  color: white;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: large;
+}
+.profileItem button:hover {
+  opacity: 1;
+}
+.optionsContainer {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 15px;
+}
+.optionsContainer .optionItem {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.titleItem {
+  opacity: 0.7;
+}
+
+/* .btn {
+    background-color: #00FFD6;
+    color: black;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 20px; 
+} */
+
+.btn button {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn button:hover {
+  color: #00e2be;
+}
+
+.textReview {
+  font-size: 18px;
+}
+
+.form {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  width: 400px;
+  height: 300px;
+  text-align: center;
+}
+
+.ratingText {
+  margin-bottom: 10px;
+}
+
+.descriptionText {
+  margin-top: 10px;
+}
+
+.reviewText textarea {
+  color: black !important;
+}
+
+.dotsMenu {
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+}
+
+.dotsMenu:hover {
+  color: #00e2be;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400;
+  border: 2px solid #000;
+}
+
+@media (max-width: 900px) {
+  .sideBar {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 16px 0px 8px;
+    gap: 25px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.559);
+    border-radius: 0px 10px 10px 0px;
+    background-color: rgb(0, 0, 0);
+    z-index: 2;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .sideBar {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    background-color: rgb(1, 0, 33);
+  }
+}

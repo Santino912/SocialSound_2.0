@@ -1,0 +1,49 @@
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.commentsContainer .input {
+  width: 85%;
+  margin-right: 2%;
+  background-color: white;
+}
+
+.commentsContainer .input input {
+  color: black !important;
+}
+
+.commentsContainer .input input::placeholder {
+  color: black !important;
+}
+
+.commentsContainer div {
+  border-radius: 30px;
+}
+
+.commentsContainer button {
+  color: #000a1f;
+  background-color: #00ffd6;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: none;
+  border-radius: 30px;
+}
+
+.commentsContainer button:hover {
+  background-color: rgba(0, 255, 214, 0.8);
+}
+
+@media (max-width: 570px) {
+  .inputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .addButton {
+    width: 50%;
+    max-width: 350px;
+    padding: 5px !important;
+  }
+}

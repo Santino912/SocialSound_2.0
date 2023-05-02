@@ -1,0 +1,117 @@
+.container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.319);
+}
+
+.containerSettings {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #000a1f;
+  min-width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.header p {
+  font-size: 20px;
+  color: rgb(180, 180, 180);
+}
+
+.header p:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 200px;
+}
+
+.content img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+}
+
+.content .inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.content img {
+  cursor: pointer;
+}
+
+.content img:hover {
+  filter: blur(2px);
+}
+
+.imageLoading {
+  cursor: default;
+  filter: blur(2px);
+}
+
+.containerLoading {
+  position: absolute;
+  top: calc(50% - 60px / 2);
+  left: calc(50% - 57px / 2);
+}
+
+.containerLoading img:hover {
+  cursor: default;
+  filter: none;
+}
+
+.containerBanner {
+  color: white;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.containerBanner p {
+  margin: 10px 0 20px;
+}
+
+.containerBanner img {
+  cursor: pointer;
+  width: 400px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.containerBanner img:hover {
+  filter: brightness(50%);
+}
+
+.containerBannerLoading {
+  position: absolute;
+  top: -130px;
+  left: calc(50% - 57px / 2);
+}

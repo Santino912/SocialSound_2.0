@@ -1,0 +1,54 @@
+.supportForm {
+    background-color: #000A1F;
+    min-height: 100vh;
+}
+
+.supportForm .back {
+    color: rgb(255, 255, 255, 1);
+    opacity: 0.5;
+}
+
+.supportForm .back:hover {
+    opacity: 1;
+}
+
+.supportForm .supportLogo img {
+    display: block;
+    max-width: 100%;
+    max-height: 38.415vh;
+    width: auto;
+    height: auto;
+}
+
+.supportForm .text {
+    color: white;
+    font-weight: bold;
+}
+
+.supportForm .form {
+    width: 40%;
+}
+
+.supportForm .form .select ul {
+    border-radius: 0 !important;
+}
+
+.supportForm .form .select svg {
+    color: white;
+}
+
+.supportForm .form .send {
+    color: #000A1F;
+    background-color: #00FFD6;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.supportForm .form .send:hover {
+    background-color: rgba(0, 255, 214, 0.8);
+}
+
+.supportForm .input {
+    width: 100%;
+}
