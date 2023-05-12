@@ -1,16 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { doc, getDocFromServer, setDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Typography, Button, Modal, Box } from "@mui/material";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MailIcon from "@mui/icons-material/Mail";
 import logo from "../../images/logoicon.png";
 import Upload from "../Upload/Upload";
 import ButtonSupport from "../buttonSupport/ButtonSupport";
 import { useAuth } from "../../context";
-import { db } from "../../firebase";
 import PayButton from "../pay/PayButton";
 import { KeyIcon } from "../componentsIcons";
 import { getUserByFirebaseId } from "../../redux/features/users/usersGetSlice";
@@ -19,21 +15,18 @@ import LikedVideosSvg from "../../images/svg/LikedVideosSvg";
 import LogoutSvg from "../../images/svg/LogoutSvg";
 import s from "./SideBar.module.css";
 import { getGenres } from "../../redux/features/genres/genreGetSlice";
+import { setConversation } from "./utils/chatFunct";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 const SideBar = () => {
   const user = useSelector((state) => state.users.currentUser);
-  const notification = useSelector((state) => state.users.userNotifications);
   const navigate = useNavigate();
   const { logout, userFirebase } = useAuth();
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    const docRef = doc(db, "userConversations", userFirebase?.uid);
-    const docSnap = await getDocFromServer(docRef);
-    userFirebase?.uid &&
-      !docSnap.exists() &&
-      (await setDoc(doc(db, "userConversations", userFirebase.uid), {}));
-  }, [dispatch]);
+  useEffect(() => {
+    setConversation(userFirebase);
+  }, [dispatch, userFirebase]);
 
   useEffect(() => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
@@ -44,9 +37,7 @@ const SideBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [checkedSideBar, setCheckedSideBar] = useState(false);
 
-  //const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -94,11 +85,10 @@ const SideBar = () => {
               <h5 className={s.premiumText}>Premium</h5>
             )}
           </Box>
-          {/* <FontAwesomeIcon
+          <MoreHorizIcon
             onClick={() => setOpenBoolean(!openBoolean)}
             className={s.dotsMenu}
-            // icon={faEllipsis}
-          /> */}
+          />
         </Box>
 
         <li className={s.routeItem}>
@@ -117,11 +107,11 @@ const SideBar = () => {
         <li className={s.routeItem}>
           <Link to="/home/notification">
             Notifications
-            {notification > 0 && (
+            {user?.notifications?.filter((noti) => !noti?.watched)?.length >
+              0 && (
               <Badge
                 badgeContent={
-                  notification?.filter((noti) => noti?.watched === false)
-                    ?.length
+                  user?.notifications?.filter((noti) => !noti?.watched)?.length
                 }
                 color="secondary"
               >
@@ -160,7 +150,6 @@ const SideBar = () => {
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                   Confirm now and you will lose all premium features!
                 </Typography>
-                {/*  <Button onClick={() => handleDownRegular()}>Confirm!</Button> cambiar funcion */}
               </Box>
             </Modal>
           </Box>

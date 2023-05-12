@@ -7,7 +7,18 @@ const getNotiByUser = async (req: Request, res: Response) => {
 
     try {
         const user = await Users.findOne({ _id })
-        const notifications = await Notifications.find({ to: user?._id, disable: false })
+
+        const notifications = await Notifications.aggregate([{ $match: { to: user?._id } }, {
+            $lookup: {
+                from: "users",
+                localField: "fromUser",
+                foreignField: "_id",
+                as: "fromUser",
+            }
+        }, {
+            $set: { fromUser: { $arrayElemAt: ["$fromUser", 0] } }
+        }, { $sort: { watched: true ? 1 : -1 } }])
+
         return res.send(notifications)
     } catch (error) {
 

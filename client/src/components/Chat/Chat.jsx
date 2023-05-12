@@ -22,6 +22,8 @@ import Messages from "./Messages/Messages";
 import { useNavigate } from "react-router-dom";
 import { Arrow } from "../componentsIcons";
 import Loading from "../loading/Loading";
+import { chatFunction } from "./utils";
+import { Autocomplete, Avatar, Box, TextField } from "@mui/material";
 
 function Chat() {
   const dispatch = useDispatch();
@@ -32,33 +34,17 @@ function Chat() {
   const destination = useSelector((state) => state.chat.destination);
   const navigate = useNavigate();
 
-  useEffect(async () => {
-    try {
-      await dispatch(getUser());
-      const docRef = doc(db, "userConversations", userFirebase?.uid);
-      const docSnap = await getDocFromServer(docRef);
-      userFirebase?.uid &&
-        !docSnap.exists() &&
-        (await setDoc(doc(db, "userConversations", userFirebase.uid), {}));
-      userFirebase?.uid && dispatch(getUserByFirebaseId(userFirebase?.uid));
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    if (!currentUser?._id) {
+      dispatch(getUserByFirebaseId(userFirebase?.uid));
     }
+    dispatch(getUser());
+    chatFunction(userFirebase);
   }, []);
 
-  const formatResult = (item) => {
-    return (
-      <div className={s.resultWrapper}>
-        <img className={s.resultPic} src={item.avatar} alt="avatar" />
-        <div className={s.resultInfo}>
-          <span className={s.resultName}>{item.name}</span>
-          <span className={s.resultUsername}>@{item.username}</span>
-        </div>
-      </div>
-    );
-  };
-
-  const handleOnSelect = async (user) => {
+  const handleOnSelect = async (e) => {
+    const user = users.find((u) => u.name === e.target.value);
+    if (!user?.name) return;
     const combinedId =
       currentUser.idGoogle > user.idGoogle
         ? currentUser.idGoogle + user.idGoogle
@@ -117,6 +103,16 @@ function Chat() {
             <Arrow />
           </button>
           <h2 className={s.convTitle}>Messages</h2>
+          <Autocomplete
+            sx={{ Input: { color: "white" } }}
+            options={users?.map((user) => user?.name)}
+            onSelect={handleOnSelect}
+            disableClearable
+            freeSolo
+            renderInput={(params) => (
+              <TextField {...params} label="Search User" />
+            )}
+          />
           {/* <ReactSearchAutocomplete
             items={users}
             placeholder="Search a user to start a conversation"

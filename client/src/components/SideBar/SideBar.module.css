@@ -9,6 +9,10 @@
   text-transform: none !important;
 }
 
+.cancelPremiumButton:hover {
+  color: red !important;
+  text-transform: none !important;
+}
 .nameSideBar {
   width: 150px;
   overflow: hidden;

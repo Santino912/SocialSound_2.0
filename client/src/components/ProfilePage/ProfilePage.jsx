@@ -22,6 +22,8 @@ import {
 import { db } from "../../firebase";
 import { followRequest } from "./utils";
 import { cleanUserToProfile } from "../../redux/features/users/usersSlice";
+import MailIcon from "@mui/icons-material/Mail";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 //import { createUserNotification } from "../../utils";
 
 const ProfilePage = () => {
@@ -61,8 +63,8 @@ const ProfilePage = () => {
     setOpenSettings(true);
   };
 
-  const handleCloseSettings = () => {
-    setOpenSettings(!openSettings);
+  const handleSettings = (value) => {
+    setOpenSettings(value);
   };
 
   const handleFollow = () => {
@@ -154,23 +156,11 @@ const ProfilePage = () => {
               </Box>
             </Box>
             <Box className={styles.optionsContainer}>
-              {/* {currentUser._id === profileUser._id && (
-                <FontAwesomeIcon
-                  onClick={() => handleOpen()}
+              {currentUser._id === profileUser._id && (
+                <MoreVertIcon
+                  onClick={() => handleSettings(true)}
                   className={styles.optionsButton}
-                  // icon={faEllipsis}
                 />
-              )} */}
-              <div>ICON</div>
-              {open && (
-                <Box
-                  className={styles.optionsModal}
-                  onClick={() => handleOpen()}
-                >
-                  <Button onClick={() => handleOpenSettings()}>
-                    Edit profile
-                  </Button>
-                </Box>
               )}
             </Box>
           </Box>
@@ -215,10 +205,7 @@ const ProfilePage = () => {
                     }}
                   >
                     <Link to="/messages">
-                      {/* <FontAwesomeIcon
-                        onClick={handleOnSelect}
-                        // icon={faEnvelope}
-                      /> */}
+                      <MailIcon onClick={handleOnSelect} />
                     </Link>
                   </p>
                 </Box>
@@ -258,16 +245,14 @@ const ProfilePage = () => {
               </Box>
             )}
           </Box>
-          {openSettings && (
-            <Box className={styles.editProfile}>
-              <EditProfile
-                close={handleCloseSettings}
-                setOpenSettings={() => setOpenSettings()}
-              />
-            </Box>
-          )}
         </Box>
       </Stack>
+      {openSettings && (
+        <EditProfile
+          handleSettings={handleSettings}
+          setSettings={setOpenSettings}
+        />
+      )}
     </ThemeProvider>
   );
 };

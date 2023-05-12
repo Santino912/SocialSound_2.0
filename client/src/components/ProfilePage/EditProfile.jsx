@@ -4,11 +4,12 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Box, Button, TextField } from "@mui/material";
 import { updateUser } from "../../redux/features/users/usersGetSlice";
 import { storage } from "../../firebase";
+import CloseIcon from "@mui/icons-material/Close";
 import Loading from "../loading/Loading";
 import PayButton from "../pay/PayButton";
 import styles from "./EditProfile.module.css";
 
-const EditProfile = (close) => {
+const EditProfile = ({ handleSettings, setSettings }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.users.currentUser);
   const [input, setInput] = useState({
@@ -70,21 +71,16 @@ const EditProfile = (close) => {
   }
 
   function handleSubmit() {
-    dispatch(updateUser(currentUser._id, input));
-    const func = (function () {
-      window.location.reload();
-    })();
+    dispatch(updateUser(currentUser?._id, input));
   }
 
   return (
     <Box className={styles.container}>
+      <Box className={styles.header}></Box>
       <Box className={styles.containerSettings}>
-        <Box className={styles.header}>
-          <h1>Edit your profile</h1>
-          <p>
-            {/* <FontAwesomeIcon onClick={close.close} icon={faXmark} /> */}
-          </p>
-        </Box>
+        <p style={{ textAlign: "right" }}>
+          <CloseIcon onClick={() => setSettings(false)} />
+        </p>
         <Box className={styles.content}>
           <input
             type="file"
@@ -114,7 +110,7 @@ const EditProfile = (close) => {
               label="Choose your name"
               defaultValue={currentUser.name}
               variant="standard"
-              sx={{ marginBottom: "25px" }}
+              sx={{ input: { color: "white" } }}
               name="name"
             />
             <TextField
@@ -122,6 +118,7 @@ const EditProfile = (close) => {
               label="Choose your username"
               defaultValue={currentUser.username}
               variant="standard"
+              sx={{ input: { color: "white" } }}
               name="username"
             />
           </Box>

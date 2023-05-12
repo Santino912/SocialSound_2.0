@@ -28,7 +28,7 @@ const notification = new Schema({
     },
     fromUser: {
         ref: "User",
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.Mixed,
         require: true
     },
     post: {

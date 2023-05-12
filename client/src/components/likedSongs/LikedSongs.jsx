@@ -21,7 +21,7 @@ export default function LikedSongs(_id) {
   }, [dispatch]);
 
   return (
-    <Box container className={style.likedVideos}>
+    <Box className={style.likedVideos}>
       <Box className={style.sideBarSpace} />
       <Box className={style.currentLikesContainer}>
         {postsLiked?.length > 0 ? (

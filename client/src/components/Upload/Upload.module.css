@@ -1,8 +1,12 @@
+.allContainer {
+  color: white;
+}
 .content {
   display: flex;
   flex-direction: column;
   min-height: 500px;
   min-width: 400px;
+  color: white !important;
 }
 .formInputs {
   list-style: none;
@@ -10,6 +14,7 @@
 .formInputs li {
   width: 100%;
   margin-bottom: 20px;
+  color: white;
 }
 .newPostBtn {
   border: none;
@@ -28,7 +33,6 @@
 }
 .btnRL:hover {
   background-color: #00ffd6;
-  color: #000a1f;
 }
 .title {
   margin: 0;
@@ -51,8 +55,10 @@
   width: 100%;
 }
 .titleInput {
+  color: white !important;
   width: 100%;
 }
+
 .selectGenres {
   width: 100%;
   border-radius: 15px;
@@ -98,7 +104,6 @@ li[role="option"]:hover {
 li[role="option"][aria-selected="true"] {
   font-weight: 600;
   background-color: aqua;
-  color: #000a1f;
   opacity: 1;
 }
 li[role="option"][aria-selected="true"]:hover {
@@ -108,6 +113,7 @@ li[role="option"][aria-selected="true"]:hover {
 .MuiOutlinedInput-input {
   outline: none;
   border: none;
+  color: white;
 }
 .Mui-focused {
   outline: none;
@@ -130,7 +136,6 @@ input[type="file"] {
   padding: 10px;
   border-radius: 15px;
   font-weight: 500;
-  color: #000a1f;
   transition: 0.3s;
 }
 .btnRL {
@@ -166,7 +171,6 @@ input[type="file"] {
 }
 .btns button {
   height: 50px;
-  color: #000a1f !important;
   font-size: 15px;
   background-color: #00ffd6 !important;
   transition: all 0.5s;
@@ -188,7 +192,6 @@ DialogActions button[type="button"] {
 }
 DialogActions button[type="submit"] {
   height: 50px;
-  color: #000a1f !important;
   font-size: 15px;
   background-color: #00ffd6 !important;
   transition: all 0.5s;

@@ -21,7 +21,6 @@ const AllPosts = ({ posts }) => {
     setChecked("audio");
     setPostsFilter(posts.filter((post) => post.type.includes("audio")));
   }
-  console.log(posts);
   return (
     <Box className={styles.containerAllPosts}>
       <Box className={styles.containerTitleFilters}>

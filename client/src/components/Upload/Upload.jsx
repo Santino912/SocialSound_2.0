@@ -20,6 +20,7 @@ import Loading from "../loading/Loading";
 import defaultImg from "../Player/default.png";
 import s from "./Upload.module.css";
 import "react-h5-audio-player/lib/styles.css";
+import { grey } from "@mui/material/colors";
 
 export default function Upload() {
   const currentUser = useSelector((state) => state.users.currentUser);
@@ -114,8 +115,6 @@ export default function Upload() {
         genres: [],
       });
       setOpen(false);
-
-      window.location.reload();
     } else alert("Check the information");
   }
 
@@ -172,18 +171,18 @@ export default function Upload() {
               <li>
                 <TextField
                   className={s.titleInput}
-                  required
                   value={postData.title}
                   name="title"
                   onChange={handleChange}
                   id="standard-basic"
                   label="Song title"
                   variant="standard"
+                  sx={{ input: { color: "white" } }}
                   disabled={loading.cover || loading.content}
+                  required
                 />
               </li>
               <li>
-                {" "}
                 <TextField
                   value={postData.description}
                   onChange={handleChange}
@@ -194,6 +193,7 @@ export default function Upload() {
                   multiline
                   rows={6}
                   variant="standard"
+                  inputProps={{ style: { color: "white" } }}
                   disabled={loading.cover || loading.content}
                 />
               </li>
@@ -309,6 +309,11 @@ export default function Upload() {
               color="customOne"
               onClick={handleClose}
               disabled={loading.cover || loading.content}
+              endIcon={
+                (loading.cover || loading.content) && (
+                  <Loading width={"10px"} height={"10px"} />
+                )
+              }
             >
               Cancel
             </Button>
@@ -317,6 +322,11 @@ export default function Upload() {
               type="submit"
               color="customOne"
               disabled={loading.cover || loading.content}
+              endIcon={
+                (loading.cover || loading.content) && (
+                  <Loading width={"10px"} height={"10px"} />
+                )
+              }
             >
               Post
             </Button>

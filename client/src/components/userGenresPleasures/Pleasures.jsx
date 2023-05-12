@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getGenres } from "../../redux/features/genres/genreGetSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button } from "@mui/material";
-
 import { setUserGenres } from "../../redux/features/users/usersGetSlice";
 import styles from "./pleasures.module.css";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 const Pleasures = () => {
   const dispatch = useDispatch();
@@ -44,7 +45,9 @@ const Pleasures = () => {
   }
 
   function handleGenresSelected(e) {
-    const currentGenresChecked = genresSelected.genres.indexOf(e.target.value);
+    const currentGenresChecked = genresSelected?.genres?.indexOf(
+      e.target.value
+    );
     const newChecked = [...genresSelected.genres];
     if (currentGenresChecked === -1) {
       newChecked.push(e.target.value);
@@ -76,13 +79,13 @@ const Pleasures = () => {
           {currentPage > 1 ? (
             <button className={styles.buttonPages}>
               <p onClick={previousPage}>
-                {/* <FontAwesomeIcon icon={faChevronLeft} /> */}
+                <KeyboardArrowLeftIcon />
               </p>
             </button>
           ) : (
             <button className={styles.buttonPagesDisabled} disabled>
               <p onClick={previousPage}>
-                {/* <FontAwesomeIcon icon={faChevronLeft} /> */}
+                <KeyboardArrowRightIcon />
               </p>
             </button>
           )}
@@ -115,13 +118,13 @@ const Pleasures = () => {
           {currentPage !== pageNumbers ? (
             <button className={styles.buttonPages}>
               <p onClick={nextPage}>
-                {/* <FontAwesomeIcon icon={faChevronRight} /> */}
+                <KeyboardArrowLeftIcon />
               </p>
             </button>
           ) : (
             <button className={styles.buttonPagesDisabled} disabled>
               <p onClick={nextPage}>
-                {/* <FontAwesomeIcon icon={faChevronRight} /> */}
+                <KeyboardArrowRightIcon />
               </p>
             </button>
           )}

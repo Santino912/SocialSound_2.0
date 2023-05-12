@@ -1,31 +1,32 @@
 .container {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 20;
   background-color: rgba(0, 0, 0, 0.319);
+  top: 0;
+  left: 0;
 }
 
 .containerSettings {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   background-color: #000a1f;
   min-width: 500px;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
+  color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 .header h1 {
@@ -62,7 +63,8 @@
   flex-direction: column;
   justify-content: space-around;
   height: 50px;
-  margin-left: 20px;
+  margin-left: 2%;
+  gap: 10px;
 }
 
 .content img {
@@ -93,10 +95,6 @@
   color: white;
   font-weight: 400;
   font-size: 13px;
-}
-
-.containerBanner p {
-  margin: 10px 0 20px;
 }
 
 .containerBanner img {

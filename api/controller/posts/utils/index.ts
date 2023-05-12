@@ -1,12 +1,19 @@
+
 interface matchObject {
   type?: String;
   genres?: Object;
 }
+
 interface matchObjectWithName {
   type?: String;
   genres?: Object;
   title: Object
 }
+
+interface sortObject {
+  countLikes?: Number | String
+}
+
 export const setMatch = (type: String, genres: String | undefined): matchObject | {} => {
   let aux: matchObject = {}
 
@@ -33,3 +40,4 @@ export const setMatchWithName = (type: String, genres: String | undefined, name:
   }
   return aux
 };
+

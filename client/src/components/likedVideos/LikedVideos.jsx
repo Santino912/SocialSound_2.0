@@ -23,12 +23,14 @@ export default function LikedVideos() {
   }, [userDB]);
 
   return (
-    <Box container className={style.likedVideos}>
+    <Box className={style.likedVideos}>
       <Box className={style.sideBarSpace} />
       <Box className={style.likesUserContainer}>
         {likesCurrentUser?.length > 0 ? (
           <Box style={{ width: "100%" }}>
-            <PlayAllButton songs={likesCurrentUser} />
+            <Box style={{ width: "55px" }}>
+              <PlayAllButton songs={likesCurrentUser} />
+            </Box>
             <Box style={{ marginTop: "30px" }}>
               {likesCurrentUser?.map((post, index) => (
                 <CardVideo

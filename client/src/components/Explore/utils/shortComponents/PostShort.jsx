@@ -7,7 +7,10 @@ const PostShort = ({ post }) => {
   const navigate = useNavigate();
 
   return (
-    <Box className={style.findedContainerShort}>
+    <Box
+      onClick={() => navigate(`/home/post/${post?._id}`)}
+      className={style.songContainerShort}
+    >
       <Box className={style.avatarContainer}>
         <img
           src={post?.cover}

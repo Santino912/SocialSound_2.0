@@ -34,7 +34,7 @@ function App() {
         light: "#25ffdc",
       },
       customTwo: {
-        main: "#001441ed",
+        main: "#001341",
         dark: "#000a1f",
         light: "#000a1fe0",
       },
@@ -51,163 +51,161 @@ function App() {
   });
 
   return (
-    <React.StrictMode>
-      <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <Routes>
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/" element={<Landing />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
-            <Route
-              path="/messages"
-              element={
-                <ProtectedRoute>
-                  <Chat />{" "}
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/messages"
-              element={
-                <ProtectedRoute>
-                  <Chat />{" "}
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/messages"
+            element={
+              <ProtectedRoute>
+                <Chat />{" "}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/messages"
+            element={
+              <ProtectedRoute>
+                <Chat />{" "}
+              </ProtectedRoute>
+            }
+          />
 
-            <Route
-              path="/home/success"
-              element={
-                <ProtectedRoute>
-                  <Success />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/support"
-              element={
-                <ProtectedRoute>
-                  <SupportForm />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/post/:idPost"
-              element={
-                <ProtectedRoute>
-                  <PostContainer />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <Admin />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/users"
-              element={
-                <ProtectedRoute>
-                  <AdminUsers />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/posts"
-              element={
-                <ProtectedRoute>
-                  <AdminPosts />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/graphs"
-              element={
-                <ProtectedRoute>
-                  <AdminGraphs />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/youAreBanned"
-              element={
-                <ProtectedRoute>
-                  <Banned />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <ProtectedRoute>
-                  <Navigate to="/login" />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/explore"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <Explore />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/explore/:_id"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <ProfilePage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/likedSongs"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <LikedSongs />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/likedVideos"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <LikedVideos />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/home/notification"
-              element={
-                <ProtectedRoute>
-                  <SideBar />
-                  <Notification />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </ThemeProvider>
-        <Player />
-      </AuthProvider>
-    </React.StrictMode>
+          <Route
+            path="/home/success"
+            element={
+              <ProtectedRoute>
+                <Success />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/support"
+            element={
+              <ProtectedRoute>
+                <SupportForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/post/:idPost"
+            element={
+              <ProtectedRoute>
+                <PostContainer />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/users"
+            element={
+              <ProtectedRoute>
+                <AdminUsers />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/posts"
+            element={
+              <ProtectedRoute>
+                <AdminPosts />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/graphs"
+            element={
+              <ProtectedRoute>
+                <AdminGraphs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/youAreBanned"
+            element={
+              <ProtectedRoute>
+                <Banned />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <ProtectedRoute>
+                <Navigate to="/login" />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/explore"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <Explore />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/explore/:_id"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/likedSongs"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <LikedSongs />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/likedVideos"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <LikedVideos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home/notification"
+            element={
+              <ProtectedRoute>
+                <SideBar />
+                <Notification />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </ThemeProvider>
+      <Player />
+    </AuthProvider>
   );
 }
 export default App;

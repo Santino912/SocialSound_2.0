@@ -40,7 +40,6 @@
 
 .artistData {
   position: relative;
-  margin-left: 20px;
 }
 
 .artistData .badge {
@@ -193,6 +192,7 @@
   max-width: 50vw;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 .followButton {

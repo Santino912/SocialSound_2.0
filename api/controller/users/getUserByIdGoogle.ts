@@ -32,7 +32,22 @@ const getUserByidGoogle = async (req: Request, res: Response) => {
                     pipeline: [{ $match: { type: "audio" } }]
                 },
             },
-
+            {
+                $lookup: {
+                    from: "notifications",
+                    localField: "_id",
+                    foreignField: "to",
+                    as: "notifications",
+                    pipeline: [{
+                        $lookup: {
+                            from: "users",
+                            localField: "fromUser",
+                            foreignField: "_id",
+                            as: "fromUser",
+                        }
+                    }, { $set: { fromUser: { $arrayElemAt: ["$fromUser", 0] } } }]
+                }
+            },
         ])
         return res.send(user[0])
     } catch (err) {

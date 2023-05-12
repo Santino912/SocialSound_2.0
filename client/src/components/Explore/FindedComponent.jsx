@@ -14,7 +14,7 @@ const FindedComponent = ({ posts, users, searchBoolean }) => {
             Songs
           </Typography>
           <Box className={style.postsContainer}>
-            {posts.map((post, i) => (
+            {posts?.map((post, i) => (
               <PostShort key={i} post={post} />
             ))}
           </Box>

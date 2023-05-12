@@ -33,21 +33,41 @@
   gap: 10px;
 }
 
-.findedContainerShort {
-  width: 410px;
+.songContainerShort {
+  width: 400px;
   display: flex;
   min-width: 250px;
   height: 150px;
   align-items: center;
   background-color: #000e2ca4;
   border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
 }
+
+.userContainerShort {
+  display: flex;
+  width: 410px;
+  min-width: 250px;
+  height: 150px;
+  align-items: center;
+  background-color: #000e2ca4;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 .avatarContainer {
   width: 160px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.avatar {
+  position: absolute;
+  width: 100px !important;
+  height: 100px !important;
 }
 
 .cover {
@@ -90,4 +110,92 @@
   font-weight: 300 !important;
   justify-content: flex-end;
   margin: 0 10px;
+}
+
+.containerAllBackground {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000a1f8f;
+  z-index: 12;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.boxModalContainer {
+  position: absolute;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: var(--main-page-color);
+  width: 100%;
+  height: 100%;
+  max-width: 700px;
+  max-height: 400px;
+  z-index: 13;
+}
+
+.swiper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.swiperSlice {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.buttonSlice {
+  width: 100%;
+}
+
+.genreButton {
+  height: 63px;
+  width: 120px;
+}
+
+.filterGenresContainer {
+  display: flex;
+  align-items: center;
+  color: black;
+  height: 150px;
+}
+
+.genresOrder {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 20vh;
+  min-height: 110px;
+}
+
+.background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 11;
+  top: 0;
+  left: 0;
+}
+
+.containerSort {
+  display: flex;
+  align-items: center;
+}
+
+.sortStyleText {
+  color: white;
+  line-height: 27px;
+  font-size: 16px;
+}
+
+.sortStyleText:hover {
+  color: var(--second-page-color) !important;
 }

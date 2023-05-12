@@ -53,9 +53,7 @@ export const getPostHome = (setLoaded) => {
 export const createPost = (body) => {
   return async (dispatch) => {
     if (body === undefined) return;
-    const { data } = await axios.post("/posts", body);
-    dispatch(addPosts(data));
-    dispatch(getPost());
+    await axios.post("/posts", body);
   };
 };
 
@@ -75,14 +73,13 @@ export const updatePost = (_id, body) => {
   };
 };
 
-//eliminar user
 export const deletePost = (_id) => {
   return async (dispatch) => {
     if (_id === undefined) return;
     try {
       await axios.delete(`/posts/${_id}`);
-      dispatch(deletePosts());
-      dispatch(getPost());
+      const { data } = await axios.get(`/posts/home/all`);
+      dispatch(getPostsToHome(data));
     } catch (error) {
       console.log(error);
     }

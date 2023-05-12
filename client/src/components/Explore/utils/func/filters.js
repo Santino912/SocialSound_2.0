@@ -21,3 +21,10 @@ export function searchBooleanFilter(filters) {
   }
   return false;
 }
+
+export function genreSelected(genres, genreSelected) {
+  if (genres?.some((genre) => genre === genreSelected)) {
+    return "#00a187";
+  }
+  return "#00ffd6";
+}

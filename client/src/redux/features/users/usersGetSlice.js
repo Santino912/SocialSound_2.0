@@ -45,9 +45,9 @@ export const updateUser = (_id, body) => {
   return async (dispatch) => {
     try {
       if (_id === undefined || body === undefined) return;
+      console.log(body);
       const response = await axios.put(`/users/${_id}`, body);
       if (response) {
-        dispatch(updateUsers());
         dispatch(getUser());
       }
     } catch (error) {
@@ -88,8 +88,7 @@ export const deleteUser = (_id) => {
 export const getUserByIdToProfile = (_id) => {
   return async (dispatch) => {
     try {
-      if (_id === undefined)
-        return console.log(`_id is undefined in getUserById`);
+      if (_id === undefined) return;
       const { data } = await axios.get(`/users/${_id}`);
       dispatch(getById(data));
     } catch (error) {
@@ -144,22 +143,26 @@ export const getUserUpdatePremium = (_id) => {
   };
 };
 
-export const getUserNotification = (_id) => {
+export const getUserNotification = (_id, setLoading) => {
   return async (dispatch) => {
+    setLoading(false);
     if (_id === undefined) return;
     try {
-      const response = await axios.get(`/notifications/${_id}`);
-      await dispatch(getNotifications(response.data));
+      const { data } = await axios.get(`/notifications/${_id}`);
+      dispatch(getNotifications(data));
+      return;
     } catch (error) {
       console.log(error);
     }
   };
 };
 
-export const watchedUserNotification = (_id) => {
+export const watchedUserNotification = (_id, idUser) => {
   return async (dispatch) => {
     try {
-      const response = await axios.put(`/notifications/watched/${_id}`);
+      const response = await axios.put(
+        `/notifications/watched/${_id}/${idUser}`
+      );
       dispatch(watchedNotification(response.data));
     } catch (error) {
       console.log(error);

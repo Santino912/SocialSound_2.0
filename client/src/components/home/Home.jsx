@@ -35,7 +35,7 @@ export default function Home() {
           Home
         </Typography>
         {posts?.length > 0 && !loaded ? (
-          posts.map((post, i) => <Post key={i} post={post} comments={false} />)
+          posts?.map((post, i) => <Post key={i} post={post} comments={false} />)
         ) : (
           <Loading width={"50px"} height={"50px"} />
         )}

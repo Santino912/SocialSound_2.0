@@ -6,8 +6,10 @@ import Users from "../../models/Users"
 const getPosts = async (req: Request, res: Response) => {
     const { genres, order, type, name } = req.query
     try {
-        const orderTime = order === "desc" ? -1 : 1
-        if (typeof type !== "string" || typeof genres !== "string" && genres !== undefined || typeof name !== "string" && name !== undefined) return res.send("Type fail")
+        if (typeof type !== "string" || typeof genres !== "string" && genres !== undefined || typeof name !== "string" && name !== undefined || typeof order !== "string") return res.send("Type fail")
+        const countLikes = order === "popular" ? 1 : -1
+        const postDateNumber = order === "oldest" ? -1 : 1
+
         if (name === undefined) {
             const match = setMatch(type, genres)
 
@@ -23,7 +25,7 @@ const getPosts = async (req: Request, res: Response) => {
                     },
                 },
                 { $addFields: { countLikes: { $size: "$likes" } } },
-                { $sort: { postDateNumber: orderTime } }
+                { $sort: { postDateNumber, countLikes } }
             ])
             return res.send(allPosts)
         }
@@ -42,7 +44,7 @@ const getPosts = async (req: Request, res: Response) => {
                     },
                 },
                 { $addFields: { countLikes: { $size: "$likes" } } },
-                { $sort: { postDateNumber: orderTime } }
+                { $sort: { postDateNumber, countLikes } }
             ])
             const allUsers = await Users.find({ name: { $regex: name, $options: "i" } })
             return res.send({ allPosts, allUsers })

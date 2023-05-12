@@ -14,6 +14,7 @@ const ProtectedRoute = ({ children }) => {
   const user = useSelector((state) => state?.users?.currentUser);
   const urls = ["/admin", "/admin/users", "/admin/posts", "/admin/graphs"];
   const { pathname } = useLocation();
+  if (pleasures?.length <= 0) return <LoadingProtectRoute />;
 
   if (user?.isBanned === true && !loading) return <Banned user={user} />;
 

@@ -110,7 +110,7 @@ router.put("/users/set/genres", setUserGenres);
 router.put("/users/set/update-ban", updateBanUser);
 router.put("/users/set/role", updateRoleUser);
 
-router.put("/notifications/watched/:_id", setNotiWatched);
+router.put("/notifications/watched/:_id/:idUser", setNotiWatched);
 router.put("/notifications/disabled/:_id/:idUser", setNotiDisabled);
 
 router.put("/posts/:_id", updatePost);

@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-  padding: 25px 15px;
+  padding: 10px 10px 0px 10px;
   width: 100%;
   font-family: "Inter", sans-serif;
 }
@@ -14,14 +14,18 @@
   z-index: -1000;
 }
 .list {
-  background: rgb(2, 0, 36);
+  display: flex;
   background: linear-gradient(
     297deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(0, 4, 8, 1) 100%
   );
   border-radius: 10px;
-  padding: 4px;
+  padding: 10px 20px;
+  color: white;
+  height: 130px;
+  align-items: center;
+  justify-content: space-between;
 }
 .watched {
   color: rgb(0, 118, 78);
@@ -71,5 +75,9 @@
   }
   .container {
     width: 112%;
+  }
+  .list {
+    height: 200px;
+    flex-direction: column;
   }
 }
