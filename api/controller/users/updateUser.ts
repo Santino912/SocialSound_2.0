@@ -18,7 +18,6 @@ const updateUser = async (req: Request, res: Response) => {
 
         const user = await Users.findOneAndUpdate({ _id }, { name, username })
 
-        console.log(user)
 
         return res.send("User Updated")
     } catch (err) {

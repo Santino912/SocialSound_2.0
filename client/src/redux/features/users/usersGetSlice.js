@@ -45,7 +45,6 @@ export const updateUser = (_id, body) => {
   return async (dispatch) => {
     try {
       if (_id === undefined || body === undefined) return;
-      console.log(body);
       const response = await axios.put(`/users/${_id}`, body);
       if (response) {
         dispatch(getUser());
