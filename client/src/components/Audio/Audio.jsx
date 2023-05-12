@@ -6,9 +6,9 @@ import "./Player.css";
 export default function Audio({ song, artist }) {
   return (
     <div className={s.playerContainer} key={Math.random()}>
-      <img src={song.cover} alt="song cover" />
+      <img src={song?.cover} alt="song cover" />
       <div className={s.songInfo}>
-        <h3>{song.title}</h3>
+        <h3>{song?.title}</h3>
         <h4>{artist?.name}</h4>
         <AudioPlayer
           key={Math.random()}

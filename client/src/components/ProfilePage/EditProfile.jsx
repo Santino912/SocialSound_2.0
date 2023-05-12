@@ -9,7 +9,7 @@ import Loading from "../loading/Loading";
 import PayButton from "../pay/PayButton";
 import styles from "./EditProfile.module.css";
 
-const EditProfile = ({ handleSettings, setSettings }) => {
+const EditProfile = ({ setSettings }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.users.currentUser);
   const [input, setInput] = useState({

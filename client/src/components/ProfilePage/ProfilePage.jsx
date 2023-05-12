@@ -54,15 +54,6 @@ const ProfilePage = () => {
     };
   }, [dispatch, _id]);
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
-
-  const handleOpenSettings = () => {
-    setOpen(!open);
-    setOpenSettings(true);
-  };
-
   const handleSettings = (value) => {
     setOpenSettings(value);
   };
@@ -156,12 +147,13 @@ const ProfilePage = () => {
               </Box>
             </Box>
             <Box className={styles.optionsContainer}>
-              {currentUser._id === profileUser._id && (
-                <MoreVertIcon
-                  onClick={() => handleSettings(true)}
-                  className={styles.optionsButton}
-                />
-              )}
+              {currentUser._id === profileUser._id &&
+                currentUser?.plan === "Premium" && (
+                  <MoreVertIcon
+                    onClick={() => handleSettings(true)}
+                    className={styles.optionsButton}
+                  />
+                )}
             </Box>
           </Box>
 
@@ -247,12 +239,7 @@ const ProfilePage = () => {
           </Box>
         </Box>
       </Stack>
-      {openSettings && (
-        <EditProfile
-          handleSettings={handleSettings}
-          setSettings={setOpenSettings}
-        />
-      )}
+      {openSettings && <EditProfile setSettings={setOpenSettings} />}
     </ThemeProvider>
   );
 };

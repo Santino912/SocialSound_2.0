@@ -17,6 +17,7 @@ import s from "./SideBar.module.css";
 import { getGenres } from "../../redux/features/genres/genreGetSlice";
 import { setConversation } from "./utils/chatFunct";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import EditProfile from "../ProfilePage/EditProfile";
 
 const SideBar = () => {
   const user = useSelector((state) => state.users.currentUser);
@@ -36,6 +37,7 @@ const SideBar = () => {
   const [openBoolean, setOpenBoolean] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [checkedSideBar, setCheckedSideBar] = useState(false);
+  const [openSettings, setOpenSettings] = useState(false);
 
   const handleCloseModal = () => setOpenModal(false);
   const style = {
@@ -85,10 +87,12 @@ const SideBar = () => {
               <h5 className={s.premiumText}>Premium</h5>
             )}
           </Box>
-          <MoreHorizIcon
-            onClick={() => setOpenBoolean(!openBoolean)}
-            className={s.dotsMenu}
-          />
+          {user?.plan === "Premium" && (
+            <MoreHorizIcon
+              onClick={() => setOpenBoolean(!openBoolean)}
+              className={s.dotsMenu}
+            />
+          )}
         </Box>
 
         <li className={s.routeItem}>
@@ -196,6 +200,7 @@ const SideBar = () => {
           </li>
         )}
       </ul>
+      {openBoolean && <EditProfile setSettings={setOpenBoolean} />}
     </Box>
   );
 };

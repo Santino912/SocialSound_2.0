@@ -16,7 +16,10 @@
   display: flex;
   flex-direction: column;
   background-color: #000a1f;
-  min-width: 500px;
+  min-width: 310px;
+  max-width: 500px;
+  min-height: 390px;
+  width: 50%;
   padding: 10px;
   border-radius: 10px;
   color: white;
@@ -49,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 200px;
+  height: 160px;
 }
 
 .content img {
@@ -99,7 +102,8 @@
 
 .containerBanner img {
   cursor: pointer;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 150px;
   border-radius: 5px;
 }
@@ -112,4 +116,16 @@
   position: absolute;
   top: -130px;
   left: calc(50% - 57px / 2);
+}
+
+@media (max-width: 500px) {
+  .containerSettings {
+    width: 100vw;
+  }
+}
+
+@media (max-height: 100px) {
+  .containerSettings {
+    width: 100vh;
+  }
 }

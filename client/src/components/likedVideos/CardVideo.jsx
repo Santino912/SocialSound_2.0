@@ -36,7 +36,7 @@ export default function CardSong({ arrayMap, post, index }) {
             fontSize: "18px",
           }}
         >
-          <p className={style.titlePostText}>{post.title}</p>
+          <p className={style.titlePostText}>{post?.title}</p>
         </Box>
       </Box>
       <Box className={styles.likeButtonContainer}>
