@@ -18,12 +18,16 @@ const ProtectedRoute = ({ children }) => {
 
   if (pleasures?.length < 2) return <Pleasures />;
 
-  if (urls?.some((act) => act === pathname) && user?.role !== "Admin")
+  if (
+    urls?.some((act) => act === pathname) &&
+    user?.role !== "Admin" &&
+    !loading
+  )
     return <Navigate to="/home" />;
 
   if (user?.isBanned === true && !loading) return <Banned user={user} />;
 
-  if (!userFirebase.username) return <Navigate to="/login" />;
+  if (!userFirebase.username && !loading) return <Navigate to="/login" />;
 
   return <div>{children}</div>;
 };
