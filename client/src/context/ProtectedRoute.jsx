@@ -34,8 +34,6 @@ const ProtectedRoute = ({ children }) => {
 
   if (user?.isBanned === true && !loading) return <Banned user={user} />;
 
-  if (!user?.username && !loading) return <Navigate to="/login" />;
-
   return <div>{children}</div>;
 };
 
