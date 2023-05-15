@@ -10,15 +10,15 @@ import Loading from "../loading/Loading";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   const posts = useSelector((state) => state.posts.postListAll);
   const { userFirebase } = useAuth();
   useEffect(() => {
-    setLoaded(true);
     dispatch(getPostHome(setLoaded));
     return () => dispatch(clearPost());
-  }, [dispatch, userFirebase.uid]);
+  }, [dispatch]);
+
   return (
     <Box className={style.home}>
       <Box className={style.posts}>
