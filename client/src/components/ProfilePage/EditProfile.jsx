@@ -116,7 +116,7 @@ const EditProfile = ({ setSettings }) => {
             <TextField
               onChange={(e) => handleChange(e)}
               label="Choose your username"
-              defaultValue={currentUser.username}
+              defaultValue={currentUser?.username}
               variant="standard"
               sx={{ input: { color: "white" } }}
               name="username"

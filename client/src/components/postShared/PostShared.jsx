@@ -117,14 +117,14 @@ export default function PostShared({ postShared, margin }) {
                 {postShared.user && postShared.user.name}
               </Typography>
             </Link>
-            <Link to={`/home/explore/${postShared.userId}`}>
+            <Link to={`/home/explore/${postShared?.userId}`}>
               <Typography
                 sx={{
                   "&:hover": { cursor: "pointer", textDecoration: "underline" },
                 }}
                 variant="body2"
               >
-                {postShared.user && `@${postShared.user.username}`}
+                {postShared.user && `@${postShared?.user?.username}`}
               </Typography>
             </Link>
           </Grid>

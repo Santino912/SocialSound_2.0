@@ -32,7 +32,7 @@ const SideBar = () => {
   useEffect(() => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
     dispatch(getGenres());
-  }, [dispatch]);
+  }, []);
 
   const [openBoolean, setOpenBoolean] = useState(false);
   const [openModal, setOpenModal] = useState(false);

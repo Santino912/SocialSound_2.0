@@ -173,7 +173,7 @@ export default function Post({ post, comments, margin, border, height }) {
                 overflow={"hidden"}
                 maxWidth={"75vw"}
               >
-                {post.user && `@${post.user.username}`}
+                {post.user && `@${post.user?.username}`}
               </Typography>
             </Link>
           </Grid>

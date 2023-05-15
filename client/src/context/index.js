@@ -10,6 +10,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 export const authContext = createContext();
 export const useAuth = () => {
@@ -21,13 +22,16 @@ export const useAuth = () => {
 export function AuthProvider({ children }) {
   const [userFirebase, setUserFirebase] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   const signup = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const logout = () => {
     signOut(auth);
+    setTimeout(function () {
+      navigate("/login");
+    }, 1000);
   };
 
   const login = (email, password) => {

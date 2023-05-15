@@ -1,19 +1,30 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/";
 import LoadingProtectRoute from "./LoadingProtectRoute";
 import Pleasures from "../components/userGenresPleasures/Pleasures";
 import Banned from "../components/banned/Banned";
+import { getUserByFirebaseId } from "../redux/features/users/usersGetSlice";
 
 const ProtectedRoute = ({ children }) => {
   const { userFirebase, loading } = useAuth();
-  const pleasures = useSelector((state) => state.users.currentUser.pleasures);
+  const pleasures = useSelector(
+    (state) => state?.users?.currentUser?.pleasures
+  );
   const user = useSelector((state) => state?.users?.currentUser);
   const urls = ["/admin", "/admin/users", "/admin/posts", "/admin/graphs"];
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
-  if (pleasures?.length <= 0) return <LoadingProtectRoute />;
+  useEffect(() => {
+    dispatch(getUserByFirebaseId(userFirebase?.uid));
+  }, []);
+
+  console.log(pleasures?.length, loading, user?.username);
+
+  if (pleasures?.length <= 0 || !pleasures?.length)
+    return <LoadingProtectRoute />;
 
   if (loading) return <LoadingProtectRoute />;
 
@@ -28,7 +39,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (user?.isBanned === true && !loading) return <Banned user={user} />;
 
-  if (!userFirebase.username && !loading) return <Navigate to="/login" />;
+  if (!user?.username && !loading) return <Navigate to="/login" />;
 
   return <div>{children}</div>;
 };

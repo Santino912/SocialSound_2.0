@@ -18,7 +18,7 @@ export default function CommentsContainer({ post }) {
     if (currentUser._id !== post.user._id) {
       await dispatch(
         createUserNotification({
-          content: `${currentUser.username} commented on your post`,
+          content: `${currentUser?.username} commented on your post`,
           userId: post.user._id,
           fromUser: currentUser._id,
           idPost: post._id,
