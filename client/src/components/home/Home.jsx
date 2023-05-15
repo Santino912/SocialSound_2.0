@@ -16,7 +16,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getPostHome(setLoaded));
     return () => dispatch(clearPost());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Box className={style.home}>
