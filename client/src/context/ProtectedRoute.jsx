@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (user?.isBanned === true && !loading) return <Banned user={user} />;
 
-  if (!userFirebase) return <Navigate to="/login" />;
+  if (!userFirebase.username) return <Navigate to="/login" />;
 
   return <div>{children}</div>;
 };
