@@ -27,12 +27,6 @@ const Pleasures = () => {
     dispatch(getGenres());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (currentUser.pleasures?.length > 1) {
-      window.location.reload();
-    }
-  }, [currentUser]);
-
   function nextPage() {
     if (currentPage < pageNumbers) {
       setCurrentPage(currentPage + 1);
@@ -64,6 +58,9 @@ const Pleasures = () => {
   function handleSubmit() {
     setloading(true);
     dispatch(setUserGenres(genresSelected));
+    setTimeout(function () {
+      window.location.reload();
+    }, 3000);
   }
 
   return (
