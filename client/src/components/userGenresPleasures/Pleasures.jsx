@@ -16,6 +16,7 @@ const Pleasures = () => {
     genres: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setloading] = useState(false);
   const genrePerPage = 10;
   const lastGenre = currentPage * genrePerPage;
   const firstGenre = lastGenre - genrePerPage;
@@ -61,6 +62,7 @@ const Pleasures = () => {
   }
 
   function handleSubmit() {
+    setloading(true);
     dispatch(setUserGenres(genresSelected));
   }
 
@@ -85,7 +87,7 @@ const Pleasures = () => {
           ) : (
             <button className={styles.buttonPagesDisabled} disabled>
               <p onClick={previousPage}>
-                <KeyboardArrowRightIcon />
+                <KeyboardArrowLeftIcon />
               </p>
             </button>
           )}
@@ -118,7 +120,7 @@ const Pleasures = () => {
           {currentPage !== pageNumbers ? (
             <button className={styles.buttonPages}>
               <p onClick={nextPage}>
-                <KeyboardArrowLeftIcon />
+                <KeyboardArrowRightIcon />
               </p>
             </button>
           ) : (
@@ -130,41 +132,25 @@ const Pleasures = () => {
           )}
         </Box>
         <div>
-          {genresSelected.genres?.length > 1 ? (
-            <Button
-              onClick={handleSubmit}
-              variant="contained"
-              sx={{
-                width: "200px",
-                height: "40px",
-                borderRadius: "10px",
+          <Button
+            onClick={handleSubmit}
+            variant="contained"
+            disabled={loading}
+            sx={{
+              width: "200px",
+              height: "40px",
+              borderRadius: "10px",
+              backgroundColor: "#00FFD6",
+              color: "black",
+              textTransform: "none",
+              fontFamily: "Inter, sans-serif",
+              "&:hover": {
                 backgroundColor: "#00FFD6",
-                color: "black",
-                textTransform: "none",
-                fontFamily: "Inter, sans-serif",
-                "&:hover": {
-                  backgroundColor: "#00FFD6",
-                },
-              }}
-            >
-              Done
-            </Button>
-          ) : (
-            <Button
-              disabled
-              onClick={handleSubmit}
-              variant="contained"
-              sx={{
-                width: "200px",
-                height: "40px",
-                borderRadius: "10px",
-                textTransform: "none",
-                fontFamily: "Inter, sans-serif",
-              }}
-            >
-              Done
-            </Button>
-          )}
+              },
+            }}
+          >
+            Done
+          </Button>
         </div>
       </Box>
     </div>
