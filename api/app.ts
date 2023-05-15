@@ -14,5 +14,5 @@ app.use(cors<Request>())
 app.use("/", router)
 
 app.listen(PORT, () => {
-    console.log(`Server Started in http://localhost:${PORT}`);
+    console.log(`Server Started in ${PORT}`);
 });

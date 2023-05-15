@@ -13,7 +13,8 @@ const ProtectedRoute = ({ children }) => {
   const urls = ["/admin", "/admin/users", "/admin/posts", "/admin/graphs"];
   const { pathname } = useLocation();
 
-  if (pleasures?.length <= 0 || loading) return <LoadingProtectRoute />;
+  if (pleasures?.length <= 0 && loading && !userFirebase.role)
+    return <LoadingProtectRoute />;
 
   if (pleasures?.length < 2) return <Pleasures />;
 
