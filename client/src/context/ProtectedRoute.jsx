@@ -19,14 +19,11 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
-  }, []);
+  }, [dispatch, userFirebase?.uid]);
 
   console.log(pleasures?.length, loading, user?.username);
 
-  if (pleasures?.length <= 0 || !pleasures?.length)
-    return <LoadingProtectRoute />;
-
-  if (loading) return <LoadingProtectRoute />;
+  if (loading || pleasures?.length <= 0) return <LoadingProtectRoute />;
 
   if (pleasures?.length < 2) return <Pleasures />;
 
