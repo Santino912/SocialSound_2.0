@@ -9,8 +9,10 @@ const NotificationShort = ({
   handleWatched,
   handleDelete,
   notification,
+  index,
 }) => {
   const navigate = useNavigate();
+
   return (
     <Box className={style.list}>
       <Box
@@ -51,22 +53,24 @@ const NotificationShort = ({
             {notification?.content}
           </Typography>
 
-          <Button
-            href="#text-buttons"
-            variant="outlined"
-            color="success"
-            sx={{
-              marginLeft: 1,
-              color: "#ffffff",
-              fontSize: 12,
-              fontWeight: 16,
-            }}
-            onClick={() =>
-              handleWatched(notification?._id, user?._id, notification?.post)
-            }
-          >
-            Post
-          </Button>
+          {notification?.post && (
+            <Button
+              href="#text-buttons"
+              variant="outlined"
+              color="success"
+              sx={{
+                marginLeft: 1,
+                color: "#ffffff",
+                fontSize: 12,
+                fontWeight: 16,
+              }}
+              onClick={() =>
+                handleWatched(notification?._id, user?._id, notification?.post)
+              }
+            >
+              Post
+            </Button>
+          )}
         </Box>
       </Box>
       <Box>
@@ -78,7 +82,7 @@ const NotificationShort = ({
             sx={{
               color: "red",
             }}
-            onClick={() => handleDelete(notification?._id)}
+            onClick={() => handleDelete(notification?._id, user?._id, index)}
           >
             <DeleteIcon fontSize="medium" />
           </IconButton>

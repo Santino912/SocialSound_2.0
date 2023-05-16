@@ -5,13 +5,12 @@ import {
   getUserError,
   getUserStart,
   getUserSuccess,
-  updateUsers,
   getById,
   getByFirebaseId,
   getUpdatePremium,
   getNotifications,
   watchedNotification,
-  disabledNotification,
+  deleteNotification,
   cleanUserToProfile,
   getUserDataGraphs,
   getPostLikedToProfile,
@@ -169,13 +168,12 @@ export const watchedUserNotification = (_id, idUser) => {
   };
 };
 
-export const disabledUserNotification = (_id, idUser) => {
+export const deleteNotificationFunc = (_id, idUser, i, arr) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(
-        `/notifications/disabled/${_id}/${idUser}`
-      );
-      dispatch(disabledNotification(data));
+      await axios.put(`/notifications/disabled/${_id}/${idUser}`);
+      let data = arr.filter((n, index) => index !== i);
+      dispatch(deleteNotification(data));
     } catch (error) {
       console.log(error);
     }

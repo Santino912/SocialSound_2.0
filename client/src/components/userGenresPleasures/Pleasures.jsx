@@ -60,7 +60,7 @@ const Pleasures = () => {
     dispatch(setUserGenres(genresSelected));
     setTimeout(function () {
       window.location.reload();
-    }, 3000);
+    }, 2000);
   }
 
   return (
@@ -132,7 +132,7 @@ const Pleasures = () => {
           <Button
             onClick={handleSubmit}
             variant="contained"
-            disabled={loading}
+            disabled={loading || genresSelected?.length < 2}
             sx={{
               width: "200px",
               height: "40px",

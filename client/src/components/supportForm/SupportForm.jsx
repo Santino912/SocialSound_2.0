@@ -23,7 +23,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 
 export function validate(input) {
-  let errors = {};
+  let errors = {
+    detail: "",
+    area: "",
+  };
   if (!input.detail) {
     errors.detail = "detail is required";
   }
@@ -38,7 +41,10 @@ export function validate(input) {
 export default function SupportForm() {
   const user = useSelector((state) => state.users.currentUser);
   const [open, setOpen] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    detail: "",
+    area: "",
+  });
   const [input, setInput] = useState({
     detail: "",
     area: "",
@@ -59,6 +65,7 @@ export default function SupportForm() {
   };
 
   const handleInputChange = function (e) {
+    console.log(errors);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -79,15 +86,15 @@ export default function SupportForm() {
       p={`1%`}
       alignItems="center"
     >
-      <Grid item container pl={`2%`} className={style.back}>
+      <Grid item container pl={`1%`} className={style.back}>
         <Link to="/home">
           <Arrow />
         </Link>
       </Grid>
       <Grid item container className={style.supportLogo}>
-        <img src={logo} alt="" width={"854"} height={"276"} />
+        <img src={logo} alt="logo" width={"20vw"} />
       </Grid>
-      <Grid item p={`4%`}>
+      <Grid item p={`1%`}>
         <Typography variant="h4" className={style.text}>
           Did an error occur or do you want to leave us a suggestion?
         </Typography>
@@ -112,20 +119,31 @@ export default function SupportForm() {
               ""
             )}
             <Grid item container>
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-standard-label">
-                  Area
-                </InputLabel>
+              <FormControl
+                variant="standard"
+                sx={{
+                  m: 1,
+                  minWidth: 120,
+                  color: "white",
+                }}
+                color="customTwo"
+                className={style.formContainer}
+              >
+                <InputLabel>Area</InputLabel>
                 <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
                   label="Area"
                   value={input["area"]}
                   onChange={handleInputChange}
                   className={style.select}
                   name="area"
+                  defaultChecked=""
+                  color="customTwo"
+                  sx={{
+                    color: "white",
+                    backgroundColor: "#000a1f00 !important",
+                  }}
                 >
-                  <MenuItem value="">
+                  <MenuItem disabled value="">
                     <em>None</em>
                   </MenuItem>
                   <MenuItem value="Login">Login</MenuItem>
@@ -155,6 +173,7 @@ export default function SupportForm() {
                 name="detail"
                 value={input["detail"]}
                 onChange={handleInputChange}
+                sx={{ textarea: { color: "white" } }}
               />
             </Grid>
             {errors.detail ? (
@@ -169,7 +188,7 @@ export default function SupportForm() {
             ) : (
               ""
             )}
-            <div item style={{ display: "none" }}>
+            <div style={{ display: "none" }}>
               <input name="name" value={user && user.name} />
               <input name="plan" value={user && user.plan} />
               <input name="email" value={user && user.email} />
@@ -189,7 +208,6 @@ export default function SupportForm() {
                 name="_autoresponse"
                 value="Your message was sent successfully!"
               />
-              {/* <input type="hidden" name="_captcha" value="false"></input> */}
             </div>
             <Grid item>
               {input.detail && input.area ? (
@@ -216,23 +234,16 @@ export default function SupportForm() {
                   Send
                 </Button>
               )}
-              <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleClose}
-              >
-                <Alert
-                  onClose={handleClose}
-                  severity="success"
-                  sx={{ width: "100%" }}
-                >
-                  Your message was sent successfully!
-                </Alert>
-              </Snackbar>
             </Grid>
           </Grid>
         </form>
       </Grid>
+
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          Your message was sent successfully!
+        </Alert>
+      </Snackbar>
     </Grid>
   );
 }

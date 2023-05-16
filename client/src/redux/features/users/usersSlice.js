@@ -95,7 +95,7 @@ const userSlice = createSlice({
         userNotifications: action.payload,
       };
     },
-    disabledNotification: (state, action) => {
+    deleteNotification: (state, action) => {
       return {
         ...state,
         userNotifications: action.payload,
@@ -142,7 +142,7 @@ export const {
   setGenres,
   getNotifications,
   watchedNotification,
-  disabledNotification,
+  deleteNotification,
   cleanUserToProfile,
   cleanCurrentUser,
   getDownToRegular,

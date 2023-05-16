@@ -5,7 +5,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  disabledUserNotification,
+  deleteNotificationFunc,
   getUserNotification,
   watchedUserNotification,
 } from "../../redux/features/users/usersGetSlice";
@@ -32,8 +32,8 @@ const Notification = () => {
     navigate(`/home/post/${idPost}`);
   };
 
-  const handleDelete = (_id, idUser) => {
-    dispatch(disabledUserNotification(_id, idUser));
+  const handleDelete = (_id, idUser, i) => {
+    dispatch(deleteNotificationFunc(_id, idUser, i, userNotification));
   };
   return (
     <>
@@ -75,6 +75,7 @@ const Notification = () => {
                         handleDelete={handleDelete}
                         user={notification?.fromUser}
                         notification={notification}
+                        index={i}
                       />
                     ))
                   ) : (
