@@ -523,7 +523,7 @@ export default function Landing() {
           <hr className={style.footerDividerLine} />
         </Grid>
         <Grid item>
-          <a href="https://github.com/Santino912/FinalProject">
+          <a href="https://github.com/Santino912/SocialSound_2.0">
             <SvgIcon
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 496 512"
@@ -539,9 +539,6 @@ export default function Landing() {
           </Typography>
         </Grid>
       </Grid>
-      {/* <Grid item container xs={5} justifyContent="center">
-                <TextField id="outlined-basic" label="Outlined" variant="outlined" className={style.input} />
-            </Grid> */}
     </Box>
   );
 }
