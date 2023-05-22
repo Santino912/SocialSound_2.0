@@ -32,11 +32,13 @@ function App() {
         main: "#00ffd6",
         dark: "#007865",
         light: "#25ffdc",
+        contrastText: "#000000",
       },
       customTwo: {
         main: "#001341",
         dark: "#000a1f",
         light: "#000a1fe0",
+        contrastText: "#FFFFFF",
       },
     },
     typography: {

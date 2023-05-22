@@ -220,9 +220,6 @@ const ProfilePage = () => {
                   {currentUser._id === profileUser._id ? (
                     <Box className={styles.noPostsYet}>
                       <p>Share your music with other users</p>
-                      <Box className={styles.buttonPost}>
-                        <Upload />
-                      </Box>
                     </Box>
                   ) : (
                     <p className={styles.noPostsYet}>

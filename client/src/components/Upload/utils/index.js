@@ -25,3 +25,31 @@ export const uploadCover = async (file, setLoading, loading) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const handleErrorsBoolean = (postData) => {
+  if (
+    !postData?.title ||
+    !postData?.content ||
+    !postData?.type ||
+    !postData?.content ||
+    postData?.genres?.length <= 0
+  ) {
+    return true;
+  }
+  return false;
+};
+
+export const handleErrors = (postData) => {
+  let aux = {
+    title: "",
+    description: "",
+    content: "",
+    type: "",
+    genres: "",
+  };
+
+  if (!postData?.title) aux.title = "Agregate title";
+  if (!postData?.content) aux.content = "Please add one song";
+  if (postData?.genres?.length <= 0) aux.genres = "Please add a gender";
+  return aux;
+};

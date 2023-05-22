@@ -67,7 +67,7 @@ export default function Post({ post, comments, margin, border, height }) {
     "Nov",
     "Dec",
   ];
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const currentUser = useSelector((state) => state.users.currentUser);
   const [openDelete, setOpenDelete] = useState(false);
   const [openReport, setOpenReport] = useState(false);
@@ -100,7 +100,6 @@ export default function Post({ post, comments, margin, border, height }) {
     setOpenReport(true);
     handleCloseMore();
   };
-
   const handleCloseReport = () => {
     setOpenReport(false);
   };
@@ -390,8 +389,8 @@ export default function Post({ post, comments, margin, border, height }) {
             fullWidth
             value={input["motiveReport"]}
             onChange={handleInputChange}
-            style={{ marginTop: "1.5%" }}
             required
+            style={{ marginTop: "1.5%", input: { color: "white" } }}
           />
           <TextField
             name="detailsReport"
@@ -402,7 +401,8 @@ export default function Post({ post, comments, margin, border, height }) {
             fullWidth
             value={input["detailsReport"]}
             onChange={handleInputChange}
-            style={{ marginTop: "1.5%" }}
+            color="customTwo"
+            style={{ marginTop: "1.5%", input: { color: "white" } }}
             required
           />
           {errors.detailsReport ? (

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -12,6 +12,8 @@ import {
   DialogActions,
   useMediaQuery,
   DialogContent /* , DialogTitle */,
+  Alert,
+  Box,
 } from "@mui/material";
 import { createPost } from "../../redux/features/post/postGetSlice";
 import AudioPlayer from "react-h5-audio-player";
@@ -19,8 +21,10 @@ import { storage } from "../../firebase.js";
 import Loading from "../loading/Loading";
 import defaultImg from "../Player/default.png";
 import s from "./Upload.module.css";
+import AddIcon from "@mui/icons-material/Add";
+
 import "react-h5-audio-player/lib/styles.css";
-import { grey } from "@mui/material/colors";
+import { handleErrors, handleErrorsBoolean } from "./utils";
 
 export default function Upload() {
   const currentUser = useSelector((state) => state.users.currentUser);
@@ -28,31 +32,22 @@ export default function Upload() {
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState({
-    cover: false,
     content: false,
   });
   const [postData, setPostData] = React.useState({
     title: "",
     description: "",
     content: "",
-    cover: "",
     type: "",
     genres: [],
   });
-
-  const uploadFile = async (file) => {
-    setLoading({ ...loading, cover: true });
-    const fileRef = ref(storage, `cover/${file.name + Math.random()}`);
-    return uploadBytes(fileRef, file)
-      .then((snapshot) => {
-        return getDownloadURL(snapshot.ref);
-      })
-      .then((url) => {
-        setLoading({ ...loading, cover: false });
-        return url;
-      })
-      .catch((err) => console.log(err));
-  };
+  const [dataErrors, setDataErrors] = useState({
+    title: "",
+    description: "",
+    content: "",
+    type: "",
+    genres: "",
+  });
 
   const uploadMusic = async (file) => {
     setLoading({ ...loading, content: true });
@@ -71,12 +66,7 @@ export default function Upload() {
     const {
       target: { value, name },
     } = event;
-    name === "cover"
-      ? setPostData({
-          ...postData,
-          [name]: await uploadFile(event.target.files[0]),
-        })
-      : name === "content"
+    name === "content"
       ? setPostData({
           ...postData,
           [name]: await uploadMusic(event.target.files[0]),
@@ -95,27 +85,32 @@ export default function Upload() {
   };
 
   async function handleSubmit(e) {
+    //hacer errores en el front y back
     e.preventDefault();
-    if (
-      postData.title &&
-      postData.genres?.length &&
-      postData.content &&
-      postData.cover &&
-      postData.type &&
-      !loading.content &&
-      !loading.cover
-    ) {
-      dispatch(createPost({ ...postData, idUser: currentUser._id }));
-      setPostData({
-        title: "",
-        description: "",
-        content: "",
-        cover: null,
-        type: "",
-        genres: [],
-      });
-      setOpen(false);
-    } else alert("Check the information");
+
+    if (handleErrorsBoolean(postData)) {
+      setDataErrors(handleErrors(postData));
+      setInterval(() => {
+        setDataErrors({
+          title: "",
+          description: "",
+          content: "",
+          type: "",
+          genres: "",
+        });
+      }, 5000);
+      return;
+    }
+
+    dispatch(createPost({ ...postData, idUser: currentUser._id }));
+    setPostData({
+      title: "",
+      description: "",
+      content: "",
+      type: "",
+      genres: [],
+    });
+    setOpen(false);
   }
 
   const theme = useTheme();
@@ -140,21 +135,7 @@ export default function Upload() {
   return (
     <div className={s.allContainer}>
       <button className={s.newPostBtn} onClick={handleClickOpen}>
-        {" "}
-        <svg
-          width="15"
-          height="15"
-          viewBox="0 0 10 10"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M5.78947 0.789474C5.78947 0.353459 5.43601 0 5 0C4.56399 0 4.21053 0.353459 4.21053 0.789474V4.21053L0.789474 4.21053C0.35346 4.21053 0 4.56399 0 5C0 5.43601 0.353459 5.78947 0.789474 5.78947L4.21053 5.78947V9.21053C4.21053 9.64654 4.56399 10 5 10C5.43602 10 5.78947 9.64654 5.78947 9.21053V5.78947L9.21053 5.78947C9.64654 5.78947 10 5.43602 10 5C10 4.56399 9.64654 4.21053 9.21053 4.21053L5.78947 4.21053V0.789474Z"
-            fill="white"
-          />
-        </svg>{" "}
+        <AddIcon />
         New Post...
       </button>
       <Dialog
@@ -178,7 +159,7 @@ export default function Upload() {
                   label="Song title"
                   variant="standard"
                   sx={{ input: { color: "white" } }}
-                  disabled={loading.cover || loading.content}
+                  disabled={loading.content}
                   required
                 />
               </li>
@@ -194,7 +175,7 @@ export default function Upload() {
                   rows={6}
                   variant="standard"
                   inputProps={{ style: { color: "white" } }}
-                  disabled={loading.cover || loading.content}
+                  disabled={loading.content}
                 />
               </li>
               <li>
@@ -215,7 +196,7 @@ export default function Upload() {
                   }}
                   MenuProps={MenuProps}
                   inputProps={{ "aria-label": "Without label" }}
-                  disabled={loading.cover || loading.content}
+                  disabled={loading.content}
                 >
                   <MenuItem disabled value="">
                     <em>Select Genres</em>
@@ -230,42 +211,27 @@ export default function Upload() {
               <li className={s.fileContainer}></li>
 
               <div className={s.playerContainer}>
-                <label htmlFor="image">
+                <label htmlFor="song">
                   {loading.cover ? (
                     <div className={s.loadingContainer}>
                       <Loading height={"50px"} width={"50px"} />
                     </div>
                   ) : (
                     <div className={s.songCover}>
-                      <img
-                        src={postData?.cover ? postData.cover : defaultImg}
-                        alt="CoverImg"
-                      />
+                      <img src={defaultImg} alt="CoverImg" />
                       <div className={!postData?.cover ? s.addImg : s.addNone}>
-                        <svg
-                          width="15"
-                          height="15"
-                          viewBox="0 0 10 10"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            clipRule="evenodd"
-                            d="M5.78947 0.789474C5.78947 0.353459 5.43601 0 5 0C4.56399 0 4.21053 0.353459 4.21053 0.789474V4.21053L0.789474 4.21053C0.35346 4.21053 0 4.56399 0 5C0 5.43601 0.353459 5.78947 0.789474 5.78947L4.21053 5.78947V9.21053C4.21053 9.64654 4.56399 10 5 10C5.43602 10 5.78947 9.64654 5.78947 9.21053V5.78947L9.21053 5.78947C9.64654 5.78947 10 5.43602 10 5C10 4.56399 9.64654 4.21053 9.21053 4.21053L5.78947 4.21053V0.789474Z"
-                            fill="white"
-                          />
-                        </svg>
+                        <AddIcon />
                       </div>
                     </div>
                   )}
+
                   <input
-                    id="image"
-                    disabled={loading.cover || loading.content}
+                    disabled={loading.content}
                     onChange={(e) => handleChange(e)}
                     type="file"
-                    accept="image/*"
-                    name="cover"
+                    id="song"
+                    name="content"
+                    accept="audio/mp3, video/mp4"
                   />
                 </label>
                 <div className={s.songInfo}>
@@ -285,22 +251,25 @@ export default function Upload() {
                         showSkipControls={false}
                         showJumpControls={true}
                       />
-                      <label className={s.btnRL} htmlFor="song">
-                        Upload a Song
-                        <input
-                          disabled={loading.cover || loading.content}
-                          onChange={(e) => handleChange(e)}
-                          type="file"
-                          id="song"
-                          name="content"
-                          accept="audio/mp3, video/mp4"
-                        />
-                      </label>
                     </div>
                   )}
                 </div>
               </div>
             </ul>
+            <Box className={s.containerAlert}>
+              {dataErrors?.genres && (
+                <Alert severity="error">{dataErrors?.genres}</Alert>
+              )}
+              {dataErrors?.content && (
+                <Alert severity="error">{dataErrors?.content}</Alert>
+              )}
+              {dataErrors?.title && (
+                <Alert severity="error">{dataErrors?.title}</Alert>
+              )}
+              {dataErrors?.type && (
+                <Alert severity="error">{dataErrors?.type}</Alert>
+              )}
+            </Box>
           </DialogContent>
           <DialogActions>
             <Button
@@ -308,11 +277,9 @@ export default function Upload() {
               autoFocus
               color="customOne"
               onClick={handleClose}
-              disabled={loading.cover || loading.content}
+              disabled={loading.content}
               endIcon={
-                (loading.cover || loading.content) && (
-                  <Loading width={"10px"} height={"10px"} />
-                )
+                loading.content && <Loading width={"10px"} height={"10px"} />
               }
             >
               Cancel
@@ -321,11 +288,9 @@ export default function Upload() {
               className={s.buttonSc}
               type="submit"
               color="customOne"
-              disabled={loading.cover || loading.content}
+              disabled={loading.content}
               endIcon={
-                (loading.cover || loading.content) && (
-                  <Loading width={"10px"} height={"10px"} />
-                )
+                loading.content && <Loading width={"10px"} height={"10px"} />
               }
             >
               Post

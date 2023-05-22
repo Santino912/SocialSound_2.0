@@ -287,6 +287,12 @@ audio {
   align-items: center;
 }
 
+.containerAlert {
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
 @media (max-width: 550px) {
   .title {
     font-size: 45px;

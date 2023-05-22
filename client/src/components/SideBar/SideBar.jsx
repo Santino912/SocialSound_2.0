@@ -167,20 +167,17 @@ const SideBar = () => {
         </Link>
         <Link to="/home/likedVideos">
           <li className={s.optionItem}>
-            {" "}
-            <LikedVideosSvg /> Music Videos{" "}
+            <LikedVideosSvg /> Music Videos
           </li>
         </Link>
       </ul>
       <ul className={s.optionsContainer}>
         <h4 className={s.titleItem}>ME</h4>
         <li className={s.optionItem}>
-          {" "}
-          <Upload />{" "}
+          <Upload />
         </li>
         <li className={s.optionItem}>
-          {" "}
-          <ButtonSupport />{" "}
+          <ButtonSupport />
         </li>
 
         <li

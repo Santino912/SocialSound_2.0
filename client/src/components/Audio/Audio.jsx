@@ -13,7 +13,7 @@ export default function Audio({ song, artist }) {
         <AudioPlayer
           key={Math.random()}
           autoPlay={false}
-          preload={"false"}
+          preload={"none"}
           style={{ borderRadius: "1rem" }}
           src={song.content}
           showSkipControls={false}

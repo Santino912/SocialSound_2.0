@@ -84,13 +84,28 @@ export const playerSlice = createSlice({
     setStored: (state, action) => {
       return {
         ...state,
-        tracks: action.payload,
+        tracks: [action.payload],
+      };
+    },
+    setTrack: (state, action) => {
+      return {
+        ...state,
+        tracks: [action.payload],
       };
     },
   },
 });
 
-export const { next, previous, add, remove, set, toggle, change, setStored } =
-  playerSlice.actions;
+export const {
+  next,
+  previous,
+  add,
+  remove,
+  set,
+  toggle,
+  change,
+  setStored,
+  setTrack,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

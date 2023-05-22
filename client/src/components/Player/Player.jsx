@@ -14,15 +14,16 @@ import {
 import defaultImg from "./default.png";
 import s from "./Player.module.css";
 import Queue from "./Queue/Queue";
+import { Box } from "@mui/material";
 
 function Player() {
+  const [showPlayer, setshowPlayer] = useState(false);
   const dispatch = useDispatch();
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const tracks = useSelector((state) => state.player.tracks);
   const playerRef = useRef();
   const location = useLocation();
   const { currentTrackIndex } = useSelector((state) => state.player);
-
   useEffect(() => {
     isPlaying
       ? playerRef.current?.audio.current.play()
@@ -57,24 +58,27 @@ function Player() {
   }, [tracks]);
 
   const handleClickPrevious = () => {
+    if (tracks?.length <= 1) return;
     dispatch(nextTrack());
   };
 
   const handleClickNext = () => {
+    if (tracks?.length <= 1) return;
     dispatch(previousTrack());
   };
 
   return (
-    <div className={s.container}>
+    <Box className={s.container}>
       {document.documentElement.clientWidth > "600" &&
         document.documentElement.clientHeight > "600" &&
         location.pathname !== "/login" &&
         location.pathname !== "/register" &&
         location.pathname !== "/home/sucess" &&
-        !location.pathname.includes("admin") && (
+        !location.pathname.includes("admin") &&
+        !showPlayer && (
           <motion.div
             drag
-            dragConstraints={{ top: -700, right: 0, bottom: 0, left: -800 }}
+            dragConstraints={{ top: -700, right: 0, bottom: 0, left: -850 }}
             className={
               location.pathname !== "/" ? s.playerContainer : s.playerNone
             }
@@ -115,7 +119,7 @@ function Player() {
             </div>
           </motion.div>
         )}
-    </div>
+    </Box>
   );
 }
 

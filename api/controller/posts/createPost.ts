@@ -6,7 +6,7 @@ import Users from "../../models/Users";
 const createPost = async (req: Request, res: Response) => {
     const { description, title, content, idUser, genres, type, cover } =
         req.body;
-    if (!description || !title || !content || !idUser || !genres || !type || !cover) return res.send("Empty body")
+    if (!title || !content || !idUser || !genres || !type || !cover) return res.send("Empty body")
     try {
         const user = await Users.findOne({ _id: idUser })
         const post = await Posts.create({
