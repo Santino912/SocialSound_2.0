@@ -24,6 +24,7 @@ import { followRequest } from "./utils";
 import { cleanUserToProfile } from "../../redux/features/users/usersSlice";
 import MailIcon from "@mui/icons-material/Mail";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useTheme } from "@emotion/react";
 //import { createUserNotification } from "../../utils";
 
 const ProfilePage = () => {
@@ -65,7 +66,7 @@ const ProfilePage = () => {
     followRequest({ idUser: currentUser?._id, followTo: profileUser?._id });
   };
 
-  const theme = createTheme({
+  const theme = useTheme({
     typography: {
       fontFamily: [
         "Inter",
