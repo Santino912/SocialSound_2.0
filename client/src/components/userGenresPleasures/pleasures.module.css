@@ -12,6 +12,7 @@
 .arrowsContainer {
   display: flex;
   gap: 5px;
+  min-width: 100px;
 }
 
 .pleasuresContainer {

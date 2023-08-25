@@ -21,7 +21,8 @@ const ProtectedRoute = ({ children }) => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
   }, [dispatch, userFirebase?.uid]);
 
-  if (loading) return <LoadingProtectRoute />;
+  if (loading || user === undefined || pleasures?.length === undefined)
+    return <LoadingProtectRoute />;
 
   if (pleasures?.length < 2) return <Pleasures />;
 

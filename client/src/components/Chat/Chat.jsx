@@ -104,7 +104,11 @@ function Chat() {
           </button>
           <h2 className={s.convTitle}>Messages</h2>
           <Autocomplete
-            sx={{ Input: { color: "white" } }}
+            sx={{
+              Input: { color: "white" },
+              fieldset: { borderColor: "white" },
+              padding: "5px 2px",
+            }}
             options={users?.map((user) => user?.name)}
             onSelect={handleOnSelect}
             disableClearable
@@ -113,31 +117,6 @@ function Chat() {
               <TextField {...params} label="Search User" />
             )}
           />
-          {/* <ReactSearchAutocomplete
-            items={users}
-            placeholder="Search a user to start a conversation"
-            fuseOptions={{ keys: ["name", "username"] }} // Search on both fields
-            resultStringKeyName="name" // String to display in the results
-            onSelect={handleOnSelect}
-            showIcon={false}
-            formatResult={formatResult}
-            styling={{
-              height: "34px",
-              border: "none",
-              borderRadius: "15px",
-              backgroundColor: "#101c36",
-              boxShadow: "none",
-              hoverBackgroundColor: "#00081ae0",
-              color: "white",
-              fontSize: "13px",
-              fontFamily: "'Inter', sans-serif",
-              iconColor: "white",
-              lineColor: "aqua",
-              placeholderColor: "grey",
-              // clearIconMargin: "3px 8px 0 0",
-              zIndex: 2,
-            }}
-          /> */}
         </div>
         {currentUser?.name ? (
           <div className={s.scrollConv}>
@@ -145,7 +124,6 @@ function Chat() {
           </div>
         ) : (
           <div className={s.loading}>
-            {" "}
             <Loading width="50px" height="50px" />{" "}
           </div>
         )}

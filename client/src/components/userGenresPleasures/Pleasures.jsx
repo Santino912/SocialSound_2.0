@@ -16,27 +16,21 @@ const Pleasures = () => {
     genres: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setloading] = useState(false);
   const genrePerPage = 10;
   const lastGenre = currentPage * genrePerPage;
   const firstGenre = lastGenre - genrePerPage;
   const currentGenres = genres.slice(firstGenre, lastGenre);
-  const pageNumbers = Math.ceil(genres?.length / genrePerPage);
 
   useEffect(() => {
     dispatch(getGenres());
   }, [dispatch]);
 
   function nextPage() {
-    if (currentPage < pageNumbers) {
-      setCurrentPage(currentPage + 1);
-    }
+    setCurrentPage(currentPage + 1);
   }
 
   function previousPage() {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+    setCurrentPage(currentPage - 1);
   }
 
   function handleGenresSelected(e) {
@@ -56,7 +50,6 @@ const Pleasures = () => {
   }
 
   function handleSubmit() {
-    setloading(true);
     dispatch(setUserGenres(genresSelected));
     setTimeout(function () {
       window.location.reload();
@@ -75,19 +68,13 @@ const Pleasures = () => {
           direction="row"
           justifyContent="space-between"
         >
-          {currentPage > 1 ? (
-            <button className={styles.buttonPages}>
-              <p onClick={previousPage}>
-                <KeyboardArrowLeftIcon />
-              </p>
-            </button>
-          ) : (
-            <button className={styles.buttonPagesDisabled} disabled>
-              <p onClick={previousPage}>
-                <KeyboardArrowLeftIcon />
-              </p>
-            </button>
-          )}
+          <Button
+            className={styles.buttonPages}
+            disabled={currentPage < 2}
+            onClick={previousPage}
+          >
+            <KeyboardArrowLeftIcon />
+          </Button>
           <Box className={styles.pleasuresContainer}>
             {currentGenres?.map((genre, key) => {
               return (
@@ -114,25 +101,20 @@ const Pleasures = () => {
               );
             })}
           </Box>
-          {currentPage !== pageNumbers ? (
-            <button className={styles.buttonPages}>
-              <p onClick={nextPage}>
-                <KeyboardArrowRightIcon />
-              </p>
-            </button>
-          ) : (
-            <button className={styles.buttonPagesDisabled} disabled>
-              <p onClick={nextPage}>
-                <KeyboardArrowRightIcon />
-              </p>
-            </button>
-          )}
+
+          <Button
+            className={styles.buttonPages}
+            disabled={currentPage > 2}
+            onClick={nextPage}
+          >
+            <KeyboardArrowRightIcon />
+          </Button>
         </Box>
         <div>
           <Button
             onClick={handleSubmit}
             variant="contained"
-            disabled={loading || genresSelected?.length < 2}
+            disabled={genresSelected?.genres?.length < 2}
             sx={{
               width: "200px",
               height: "40px",

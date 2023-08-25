@@ -64,8 +64,15 @@ export default function SupportForm() {
     setOpen(false);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setInput({
+      detail: "",
+      area: "",
+    });
+  };
+
   const handleInputChange = function (e) {
-    console.log(errors);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -103,10 +110,7 @@ export default function SupportForm() {
         </Typography>
       </Grid>
       <Grid item className={style.form}>
-        <form
-          action="https://formsubmit.co/socialsound.web@gmail.com"
-          method="POST"
-        >
+        <form onSubmit={(e) => handleSubmit(e)}>
           <Grid container direction="column" spacing={2} alignItems="center">
             {errors.area ? (
               <div

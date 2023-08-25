@@ -32,7 +32,6 @@ const ProfilePage = () => {
   const { _id } = useParams();
   const currentUser = useSelector((state) => state.users.currentUser);
   const profileUser = useSelector((state) => state.users.userToProfile);
-  const [open, setOpen] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
   const [following, setFollowing] = useState(false);
   const [followersCount, setFollowersCount] = useState(0);

@@ -5,9 +5,6 @@ export const userExistGoogle = async (user) => {
     .post("/user", {
       ...user,
     })
-    .then(function (response) {
-      console.log(response);
-    })
     .catch(function (error) {
       console.log(error);
     });
@@ -18,9 +15,6 @@ export const userExistSignUp = (user, usersDB) => {
     return axios
       .post("/user", {
         ...user,
-      })
-      .then(function (response) {
-        console.log(response);
       })
       .catch(function (error) {
         return "Ya existe una cuenta con este email";

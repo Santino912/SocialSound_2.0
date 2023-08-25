@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/system";
 import { getSongsLikesByUserId } from "../../redux/features/like/likeGetSlice";
@@ -6,8 +6,10 @@ import CardVideo from "./CardVideo";
 import PlayAllButton from "../PlayAllButton/PlayAllButton";
 import style from "./likedVideos.module.css";
 import { clearLikes } from "../../redux/features/like/likeSlice";
+import Loading from "../loading/Loading";
 
 export default function LikedVideos() {
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const userDB = useSelector((state) => state.users.currentUser);
   const likesCurrentUser = useSelector(
@@ -15,7 +17,7 @@ export default function LikedVideos() {
   );
 
   useEffect(() => {
-    dispatch(getSongsLikesByUserId(userDB._id, "video"));
+    dispatch(getSongsLikesByUserId(userDB._id, "video", setLoading));
 
     return () => {
       dispatch(clearLikes());
@@ -26,7 +28,9 @@ export default function LikedVideos() {
     <Box className={style.likedVideos}>
       <Box className={style.sideBarSpace} />
       <Box className={style.likesUserContainer}>
-        {likesCurrentUser?.length > 0 ? (
+        {loading || likesCurrentUser === undefined ? (
+          <Loading width={"56px"} height={"56px"} />
+        ) : likesCurrentUser?.length > 0 ? (
           <Box style={{ width: "100%" }}>
             <Box style={{ width: "55px" }}>
               <PlayAllButton songs={likesCurrentUser} />
