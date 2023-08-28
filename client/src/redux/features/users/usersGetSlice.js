@@ -143,11 +143,14 @@ export const getUserUpdatePremium = (_id) => {
 
 export const getUserNotification = (_id, setLoading) => {
   return async (dispatch) => {
-    setLoading(false);
-    if (_id === undefined) return;
+    if (_id === undefined) {
+      setLoading(false);
+      return;
+    }
     try {
       const { data } = await axios.get(`/notifications/${_id}`);
       dispatch(getNotifications(data));
+      setLoading(false);
       return;
     } catch (error) {
       console.log(error);

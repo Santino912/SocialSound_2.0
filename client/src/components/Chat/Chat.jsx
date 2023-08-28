@@ -124,7 +124,7 @@ function Chat() {
           </div>
         ) : (
           <div className={s.loading}>
-            <Loading width="50px" height="50px" />{" "}
+            <Loading width="50px" height="50px" />
           </div>
         )}
       </div>
