@@ -3,6 +3,9 @@ import Users from "../../models/Users"
 
 const getUserByidGoogle = async (req: Request, res: Response) => {
     const { idGoogle } = req.params
+
+    if (idGoogle === undefined) return res.send({ err: 4000, msg: "idGoogle is undefined" })
+
     try {
         const user = await Users.aggregate([
             { $match: { idGoogle } },
@@ -49,9 +52,15 @@ const getUserByidGoogle = async (req: Request, res: Response) => {
                 }
             },
         ])
+
+        if (user[0] === undefined) return res.send({
+            err: 4001, msg: "there is no user with this google id"
+        })
+
         return res.send(user[0])
     } catch (err) {
-        return console.log(err)
+        console.log(err)
+        return res.send(err)
     }
 }
 export default getUserByidGoogle

@@ -30,7 +30,7 @@ const SideBar = () => {
   }, [dispatch, userFirebase]);
 
   useEffect(() => {
-    dispatch(getUserByFirebaseId(userFirebase?.uid));
+    dispatch(getUserByFirebaseId(userFirebase?.uid, window, logout, "sidebar"));
     dispatch(getGenres());
   }, []);
 
@@ -95,11 +95,10 @@ const SideBar = () => {
         </Box>
 
         <li className={s.routeItem}>
-          {" "}
           <Link to="/home">Home</Link>{" "}
         </li>
+
         <li className={s.routeItem}>
-          {" "}
           <Link to="/home/explore">Explore</Link>{" "}
         </li>
 

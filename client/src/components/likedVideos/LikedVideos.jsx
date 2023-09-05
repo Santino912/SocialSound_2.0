@@ -29,7 +29,14 @@ export default function LikedVideos() {
       <Box className={style.sideBarSpace} />
       <Box className={style.likesUserContainer}>
         {loading || likesCurrentUser === undefined ? (
-          <Loading width={"56px"} height={"56px"} />
+          <Box
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            sx={{ height: "100%" }}
+          >
+            <Loading width={"5vw"} />
+          </Box>
         ) : likesCurrentUser?.length > 0 ? (
           <Box style={{ width: "100%" }}>
             <Box style={{ width: "55px" }}>

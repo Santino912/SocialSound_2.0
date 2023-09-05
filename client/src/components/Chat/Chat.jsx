@@ -8,7 +8,6 @@ import {
 import {
   doc,
   getDoc,
-  getDocFromServer,
   serverTimestamp,
   setDoc,
   updateDoc,
@@ -23,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { Arrow } from "../componentsIcons";
 import Loading from "../loading/Loading";
 import { chatFunction } from "./utils";
-import { Autocomplete, Avatar, Box, TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
 function Chat() {
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ function Chat() {
 
   useEffect(() => {
     if (!currentUser?._id) {
-      dispatch(getUserByFirebaseId(userFirebase?.uid));
+      dispatch(getUserByFirebaseId(userFirebase?.uid, window));
     }
     dispatch(getUser());
     chatFunction(userFirebase);

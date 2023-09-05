@@ -118,11 +118,13 @@ export const cleanUserState = () => {
   };
 };
 
-export const getUserByFirebaseId = (_id) => {
+export const getUserByFirebaseId = (_id, window, logout, site) => {
   return async (dispatch) => {
     if (_id === undefined) return;
     try {
       const { data } = await axios.get(`/users/idGoogle/${_id}`);
+      if (data.err === 4000 && site === "sidebar") return window?.reload();
+      if (data.err === 4001 && site === "sidebar") return logout();
       dispatch(getByFirebaseId(data));
     } catch (error) {
       console.log(error);
@@ -143,10 +145,7 @@ export const getUserUpdatePremium = (_id) => {
 
 export const getUserNotification = (_id, setLoading) => {
   return async (dispatch) => {
-    if (_id === undefined) {
-      setLoading(false);
-      return;
-    }
+    if (_id === undefined) return;
     try {
       const { data } = await axios.get(`/notifications/${_id}`);
       dispatch(getNotifications(data));

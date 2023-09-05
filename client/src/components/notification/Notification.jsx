@@ -14,6 +14,7 @@ import NotificationShort from "./NotificationShort";
 import { useEffect } from "react";
 import { useState } from "react";
 import Loading from "../loading/Loading";
+
 const Notification = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -65,8 +66,10 @@ const Notification = () => {
             >
               <Box className={style.containerDescription}>
                 <>
-                  {loading ? (
-                    <Loading width={"20vw"} />
+                  {loading || userNotification === undefined ? (
+                    <Box className={style.divNotNotification}>
+                      <Loading width={"5vw"} />
+                    </Box>
                   ) : userNotification?.length > 0 ? (
                     userNotification?.map((notification, i) => (
                       <NotificationShort
