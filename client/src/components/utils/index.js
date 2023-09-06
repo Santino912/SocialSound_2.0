@@ -8,7 +8,7 @@ export const userExistGoogle = async (user) => {
     .catch(function (error) {
       console.log(error);
     });
-  return data.status === 200;
+  return data;
 };
 
 export const userExistSignUp = (user, usersDB) => {

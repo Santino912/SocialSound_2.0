@@ -23,10 +23,10 @@ const createUser = async (req: Request, res: Response) => {
             banner,
             idGoogle
         });
+        const allUsers = await Users.find()
 
 
-
-        return res.send({ status: 200, msg: "User created" });
+        return res.send(allUsers);
 
     } catch (error) {
         return res.status(404).send(error);
