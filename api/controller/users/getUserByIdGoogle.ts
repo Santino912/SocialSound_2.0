@@ -7,6 +7,10 @@ const getUserByidGoogle = async (req: Request, res: Response) => {
     if (idGoogle === undefined) return res.send({ err: 4000, msg: "idGoogle is undefined" })
 
     try {
+        const userExist = await Users.exists({ idGoogle })
+        if (userExist === null) return res.send({
+            err: 4001, msg: "there is no user with this google id"
+        })
         const user = await Users.aggregate([
             { $match: { idGoogle } },
             {
@@ -53,9 +57,7 @@ const getUserByidGoogle = async (req: Request, res: Response) => {
             },
         ])
 
-        if (user[0] === undefined) return res.send({
-            err: 4001, msg: "there is no user with this google id"
-        })
+
 
         return res.send(user[0])
     } catch (err) {

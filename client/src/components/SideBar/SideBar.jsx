@@ -30,7 +30,7 @@ const SideBar = () => {
   }, [dispatch, userFirebase]);
 
   useEffect(() => {
-    dispatch(getUserByFirebaseId(userFirebase?.uid, window, logout, "sidebar"));
+    dispatch(getUserByFirebaseId(userFirebase?.uid, logout, "sidebar", window));
     dispatch(getGenres());
   }, []);
 

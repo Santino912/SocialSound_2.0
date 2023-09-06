@@ -118,12 +118,12 @@ export const cleanUserState = () => {
   };
 };
 
-export const getUserByFirebaseId = (_id, window, logout, site) => {
+export const getUserByFirebaseId = (_id, logout, site, window) => {
   return async (dispatch) => {
     if (_id === undefined) return;
     try {
       const { data } = await axios.get(`/users/idGoogle/${_id}`);
-      if (data.err === 4000 && site === "sidebar") return window?.reload();
+      if (data.err === 4000 && site === "sidebar") return window?.location.reload();
       if (data.err === 4001 && site === "sidebar") return logout();
       dispatch(getByFirebaseId(data));
     } catch (error) {

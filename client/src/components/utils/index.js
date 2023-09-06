@@ -1,13 +1,14 @@
 import axios from "axios";
 
 export const userExistGoogle = async (user) => {
-  return axios
+  const { data } = await axios
     .post("/user", {
       ...user,
     })
     .catch(function (error) {
       console.log(error);
     });
+  return data.status === 200;
 };
 
 export const userExistSignUp = (user, usersDB) => {

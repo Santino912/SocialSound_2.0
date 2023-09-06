@@ -26,10 +26,9 @@ const createUser = async (req: Request, res: Response) => {
 
 
 
-        return res.send(user);
+        return res.send({ status: 200, msg: "User created" });
 
     } catch (error) {
-        console.log(error)
         return res.status(404).send(error);
     }
 }

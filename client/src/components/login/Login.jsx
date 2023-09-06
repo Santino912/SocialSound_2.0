@@ -99,7 +99,7 @@ const Login = () => {
         idGoogle: res.user.uid,
         avatar: res.user.photoURL,
       };
-      userExistGoogle(newUser);
+      await userExistGoogle(newUser);
       setGoogleUser(newUser);
     } catch (err) {
       return;
