@@ -20,7 +20,6 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
   }, [dispatch, userFirebase?.uid]);
-  logout();
   if (loading || user === undefined || pleasures?.length === undefined)
     return <LoadingProtectRoute />;
 
