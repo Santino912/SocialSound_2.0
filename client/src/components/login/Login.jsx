@@ -104,7 +104,7 @@ const Login = () => {
     } catch (err) {
       return;
     }
-    return navigate("/home");
+    return window.location.reload();
   };
 
   const handleSendPasswordReset = async (email) => {

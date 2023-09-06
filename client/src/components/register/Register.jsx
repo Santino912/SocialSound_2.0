@@ -96,7 +96,7 @@ const Register = () => {
     } catch (err) {
       return console.log(err);
     }
-    navigate("/login");
+    return window.location.reload();
   };
 
   const handleSignInGoogle = async () => {
