@@ -8,7 +8,7 @@ import Banned from "../components/banned/Banned";
 import { getUserByFirebaseId } from "../redux/features/users/usersGetSlice";
 
 const ProtectedRoute = ({ children }) => {
-  const { userFirebase, loading } = useAuth();
+  const { userFirebase, loading, logout } = useAuth();
   const pleasures = useSelector(
     (state) => state?.users?.currentUser?.pleasures
   );
@@ -20,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     dispatch(getUserByFirebaseId(userFirebase?.uid));
   }, [dispatch, userFirebase?.uid]);
-
+  logout();
   if (loading || user === undefined || pleasures?.length === undefined)
     return <LoadingProtectRoute />;
 
